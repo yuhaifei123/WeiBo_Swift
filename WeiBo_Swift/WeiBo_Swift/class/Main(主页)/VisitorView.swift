@@ -9,9 +9,20 @@
 import UIKit
 import SnapKit
 
+///swift 中的协议
+protocol VisitorViewDelegate : NSObjectProtocol{
+
+
+    func loginBtnWillClick();
+
+    func registerBtnWillClick();
+}
                 
 ///登陆没有成功，所展示的view
 class VisitorView: UIView {
+
+    var delegate : VisitorViewDelegate?;
+
 
     //获取屏幕大小
     var bou:CGRect = UIScreen.main.bounds;
@@ -23,6 +34,11 @@ class VisitorView: UIView {
         iconView.isHidden = !ishome;
         homeIcon.image = UIImage(named:imageName);
         messageLabel.text = message;
+
+        if ishome == true  {
+
+            startRotate();
+        }
     }
 
     ///用代码，先界面
@@ -48,12 +64,35 @@ class VisitorView: UIView {
 
     }
 
+    ///转盘启动动画
+    private func startRotate(){
+        let rotateAni = CABasicAnimation(keyPath: "transform.rotation")
+        rotateAni.fromValue = 0.0
+        rotateAni.toValue = M_PI * 2.0
+        rotateAni.duration = 10
+        rotateAni.repeatCount = MAXFLOAT
+        //不停的转动
+        rotateAni.isRemovedOnCompletion = false;
+        iconView.layer.add(rotateAni, forKey: nil);
+    }
+
     ///在swif中，只能用一种创建，要么代码，要么xib/SB
     required init?(coder aDecoder: NSCoder) {
         ///报错
         fatalError("init(coder:) has not been implemented")
     }
 
+    //登陆按钮监听
+    func  loginBtnClick(){
+
+        delegate?.loginBtnWillClick();
+    }
+
+    //注册按钮监听
+    func registerBtnClick(){
+
+        delegate?.registerBtnWillClick();
+    }
 
     ///懒加载，转盘
     private lazy var iconView : UIImageView = {
@@ -87,8 +126,14 @@ class VisitorView: UIView {
         bu.setTitle("登陆", for: UIControlState.normal);
         bu.setTitleColor(UIColor.red, for: UIControlState.normal);
         bu.setBackgroundImage(UIImage(named:"common_button_white_disable"), for: UIControlState.normal);
+        //按钮，点击监听
+     //   bu.addTarget(self, action: loginBtnClick(), for: UIControlEvents.touchDown);
+      //  bu.addTarget(self, action: , for: UIControlEvents.touchUpInside);
+        bu.addTarget(self, action: #selector(VisitorView.loginBtnClick), for: UIControlEvents.touchUpInside);
         return bu;
     }();
+
+
 
     ///注册按钮
     private lazy var registerButton : UIButton = {
@@ -97,6 +142,7 @@ class VisitorView: UIView {
         bu.setTitle("注册", for: UIControlState.normal);
         bu.setTitleColor(UIColor.red, for: UIControlState.normal);
         bu.setBackgroundImage(UIImage(named: "common_button_white_disable"), for: UIControlState.normal);
+        bu.addTarget(self, action: #selector(VisitorView.registerBtnClick), for: UIControlEvents.touchUpInside);
         return bu;
     }();
 }
