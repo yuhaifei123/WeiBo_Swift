@@ -13,14 +13,12 @@ class Add_TableViewController: All_TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
+        if isLogin == false {
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+            visitorView?.setupVisitorView(ishome: false, imageName: "visitordiscover_image_message", message: "登录后，别人评论你的微博，发给你的消息，都会在这里收到通知");
+        }
+
     }
-    
 
 
 }

@@ -10,23 +10,23 @@ import UIKit
 
 class All_TableViewController: UITableViewController {
 
-    var userLogin : Bool?;
+    var isLogin : Bool?;
+    var visitorView : VisitorView?;
 
     override func loadView() {
 
-        userLogin = false;
+        isLogin = false;
 
-        userLogin == true ? super.loadView() : setupVisitorView();
+        isLogin == true ? super.loadView() : setupVisitorView();
 
     }
 
 
-    ///没有登陆，页面展示
+    ///没有登陆，页面展r示
     private func setupVisitorView(){
 
-        
         view = VisitorView();
-        
+        visitorView = view as! VisitorView!;
     }
     
 

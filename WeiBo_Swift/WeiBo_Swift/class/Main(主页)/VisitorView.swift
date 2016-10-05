@@ -13,9 +13,17 @@ import SnapKit
 ///登陆没有成功，所展示的view
 class VisitorView: UIView {
 
-
     //获取屏幕大小
     var bou:CGRect = UIScreen.main.bounds;
+
+    ///设置首页的页面样式，
+    public func setupVisitorView(ishome : Bool, imageName : String,message : String){
+
+        //是否隐藏
+        iconView.isHidden = !ishome;
+        homeIcon.image = UIImage(named:imageName);
+        messageLabel.text = message;
+    }
 
     ///用代码，先界面
     override init(frame: CGRect) {
