@@ -10,12 +10,11 @@ import UIKit
 
 class All_TableViewController: UITableViewController,VisitorViewDelegate{
 
-    var isLogin : Bool?;
+    var isLogin : Bool = true;
     var visitorView : VisitorView?;
 
     override func loadView() {
 
-        isLogin = false;
 
         isLogin == true ? super.loadView() : setupVisitorView();
 
