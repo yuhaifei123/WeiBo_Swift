@@ -26,18 +26,23 @@ class Home_TableViewController: All_TableViewController {
     ///登陆成功了，就是设置navitem的按钮
     private func navButton(){
 
-        let leftBut = UIButton();
-        leftBut.setBackgroundImage(UIImage(named: "navigationbar_friendattention"), for: UIControlState.normal);
-        leftBut.setBackgroundImage(UIImage(named: "navigationbar_friendattention_highlighted"), for: UIControlState.highlighted);
-        leftBut.addTarget(self, action: #selector(self.leftBtnClick), for: UIControlEvents.touchUpInside);
-        leftBut.sizeToFit();
-
-        //navigationItem.leftBarButtonItem = UIBarButtonItem(ItemBut(imageNameN: "navigationbar_friendattention", target: self, action: #selector(self.leftBtnClick)));
+       //设置控制器，左右
        navigationItem.leftBarButtonItem =  UIBarButtonItem.ItemBut(imageNameN: "navigationbar_friendattention", target: self, action: #selector(self.leftBtnClick));
 
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem.ItemBut(imageNameN: "navigationbar_pop", target: self, action: #selector(self.rightButClick));
+
+        let titleButton = ButtonTitle();
+        titleButton.setTitle("aaaaaa ", for: UIControlState.normal);
+               titleButton.addTarget(self, action: #selector(self.titeButton(btn:)), for: UIControlEvents.touchUpInside);
+
+        navigationItem.titleView = titleButton;
     }
 
+
+    @objc private func titeButton(btn : UIButton){
+
+        btn.isSelected = !btn.isSelected;
+    }
 
     func  leftBtnClick(){
 

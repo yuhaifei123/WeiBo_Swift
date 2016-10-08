@@ -15,6 +15,7 @@
 		4DB86D341D61876B00D6A974 /* WeiBo_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB86D331D61876B00D6A974 /* WeiBo_SwiftTests.swift */; };
 		4DB86D3F1D61876B00D6A974 /* WeiBo_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB86D3E1D61876B00D6A974 /* WeiBo_SwiftUITests.swift */; };
 		4DC51E3F1D7153220075E5C9 /* Add_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC51E3E1D7153220075E5C9 /* Add_TableViewController.swift */; };
+		4DCA8FF81DA8B6EF0071E19A /* ButtonTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA8FF71DA8B6EF0071E19A /* ButtonTitle.swift */; };
 		4DCB3F3E1D61EF4B0025466A /* Main_TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB3F3D1D61EF4B0025466A /* Main_TabBarController.swift */; };
 		4DCB3F451D61F0590025466A /* Home_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB3F441D61F0590025466A /* Home_TableViewController.swift */; };
 		4DCB3F471D61F07B0025466A /* Message_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB3F461D61F07B0025466A /* Message_TableViewController.swift */; };
@@ -56,6 +57,7 @@
 		4DB86D3E1D61876B00D6A974 /* WeiBo_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiBo_SwiftUITests.swift; sourceTree = "<group>"; };
 		4DB86D401D61876B00D6A974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DC51E3E1D7153220075E5C9 /* Add_TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Add_TableViewController.swift; sourceTree = "<group>"; };
+		4DCA8FF71DA8B6EF0071E19A /* ButtonTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTitle.swift; sourceTree = "<group>"; };
 		4DCB3F3D1D61EF4B0025466A /* Main_TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main_TabBarController.swift; sourceTree = "<group>"; };
 		4DCB3F441D61F0590025466A /* Home_TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home_TableViewController.swift; sourceTree = "<group>"; };
 		4DCB3F461D61F07B0025466A /* Message_TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message_TableViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				4DFE7FB21DA4FE980022E8CC /* UIBarButtonItem_Fen.swift */,
+				4DCA8FF71DA8B6EF0071E19A /* ButtonTitle.swift */,
 			);
 			name = "tool(工具)";
 			path = "class/tool(工具)";
@@ -385,6 +388,7 @@
 				4DB559531DA3A7C6006F73C3 /* VisitorView.swift in Sources */,
 				4DCB3F4D1D61FB550025466A /* Discover_TableViewController.swift in Sources */,
 				4DC51E3F1D7153220075E5C9 /* Add_TableViewController.swift in Sources */,
+				4DCA8FF81DA8B6EF0071E19A /* ButtonTitle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
