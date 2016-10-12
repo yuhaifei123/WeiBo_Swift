@@ -15,7 +15,6 @@ class All_TableViewController: UITableViewController,VisitorViewDelegate{
 
     override func loadView() {
 
-
         isLogin == true ? super.loadView() : setupVisitorView();
 
         //设置nav控制请
