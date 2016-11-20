@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fA1-H8-O4V">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--PopSB-->
+        <scene sceneID="d4g-nq-aE7">
+            <objects>
+                <viewController id="fA1-H8-O4V" customClass="PopSB" customModule="WeiBo_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zPA-Kn-MUz"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hkm-tl-UXw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Emw-X1-CKZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popover_background" translatesAutoresizingMaskIntoConstraints="NO" id="M3c-ib-LzW">
+                                <rect key="frame" x="-4" y="20" width="383" height="647"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Hkm-tl-UXw" firstAttribute="top" secondItem="M3c-ib-LzW" secondAttribute="bottom" id="WQv-kA-Nyf"/>
+                            <constraint firstItem="M3c-ib-LzW" firstAttribute="leading" secondItem="Emw-X1-CKZ" secondAttribute="leadingMargin" constant="-20" id="Yav-N8-Uob"/>
+                            <constraint firstItem="M3c-ib-LzW" firstAttribute="top" secondItem="zPA-Kn-MUz" secondAttribute="bottom" id="iwu-Hl-Ah5"/>
+                            <constraint firstItem="M3c-ib-LzW" firstAttribute="centerX" secondItem="Emw-X1-CKZ" secondAttribute="centerX" id="lOv-sg-Uo2"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CFr-6g-pfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="159" y="-656"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="popover_background" width="217" height="49"/>
+    </resources>
+</document>
