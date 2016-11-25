@@ -26,19 +26,19 @@
                                 <rect key="frame" x="-4" y="20" width="383" height="647"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7si-yg-cNc">
-                                <rect key="frame" x="21" y="20" width="333" height="647"/>
+                                <rect key="frame" x="1" y="40" width="373" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7si-yg-cNc" firstAttribute="leading" secondItem="Emw-X1-CKZ" secondAttribute="leadingMargin" constant="5" id="KyR-K8-rq2"/>
-                            <constraint firstItem="7si-yg-cNc" firstAttribute="top" secondItem="zPA-Kn-MUz" secondAttribute="bottom" id="RPT-cz-OpM"/>
+                            <constraint firstItem="7si-yg-cNc" firstAttribute="leading" secondItem="Emw-X1-CKZ" secondAttribute="leadingMargin" constant="-15" id="KyR-K8-rq2"/>
+                            <constraint firstItem="7si-yg-cNc" firstAttribute="top" secondItem="zPA-Kn-MUz" secondAttribute="bottom" constant="20" id="RPT-cz-OpM"/>
                             <constraint firstItem="Hkm-tl-UXw" firstAttribute="top" secondItem="M3c-ib-LzW" secondAttribute="bottom" id="WQv-kA-Nyf"/>
                             <constraint firstItem="M3c-ib-LzW" firstAttribute="leading" secondItem="Emw-X1-CKZ" secondAttribute="leadingMargin" constant="-20" id="Yav-N8-Uob"/>
                             <constraint firstItem="M3c-ib-LzW" firstAttribute="top" secondItem="zPA-Kn-MUz" secondAttribute="bottom" id="iwu-Hl-Ah5"/>
                             <constraint firstItem="M3c-ib-LzW" firstAttribute="centerX" secondItem="Emw-X1-CKZ" secondAttribute="centerX" id="lOv-sg-Uo2"/>
-                            <constraint firstItem="Hkm-tl-UXw" firstAttribute="top" secondItem="7si-yg-cNc" secondAttribute="bottom" id="rFX-cn-p0P"/>
+                            <constraint firstItem="Hkm-tl-UXw" firstAttribute="top" secondItem="7si-yg-cNc" secondAttribute="bottom" constant="10" id="rFX-cn-p0P"/>
                             <constraint firstItem="7si-yg-cNc" firstAttribute="centerX" secondItem="Emw-X1-CKZ" secondAttribute="centerX" id="wDB-ug-oLC"/>
                         </constraints>
                     </view>
