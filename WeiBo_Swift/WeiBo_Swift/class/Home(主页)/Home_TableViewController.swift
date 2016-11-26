@@ -10,6 +10,8 @@ import UIKit
 
 class Home_TableViewController: All_TableViewController {
 
+    //标题 button
+    let titleButton = ButtonTitle();
     var isOpen : Bool = false;
     
     override func viewDidLoad() {
@@ -23,6 +25,25 @@ class Home_TableViewController: All_TableViewController {
 
             navButton();
         }
+        
+        
+        /// 接受广播
+        let notName = NSNotification.Name(rawValue:"notifyChatMsgRecv");
+        NotificationCenter.default.addObserver(self, selector: #selector(self.radioClass(notification:)), name: notName, object: nil);
+    }
+    
+    
+    /// 接受广播方法
+    ///
+    /// - Parameter notification: <#notification description#>
+    func radioClass(notification : Notification){
+        
+        let dic = notification.userInfo;
+        if let dic_un = dic{
+            
+            let isSelect = dic_un["state"] as! Bool;
+            titleButton.isSelected = isSelect;
+        }
     }
 
     ///登陆成功了，就是设置navitem的按钮
@@ -33,7 +54,7 @@ class Home_TableViewController: All_TableViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem.ItemBut(imageNameN: "navigationbar_pop", target: self, action: #selector(self.rightButClick));
 
-        let titleButton = ButtonTitle();
+        
         titleButton.setTitle("微博 daemo ", for: UIControlState.normal);
                titleButton.addTarget(self, action: #selector(self.titeButton(btn:)), for: UIControlEvents.touchUpInside);
 
@@ -45,7 +66,7 @@ class Home_TableViewController: All_TableViewController {
     ///
     /// - Parameter btn: <#btn description#>
     @objc private func titeButton(btn : UIButton){
-
+        
         //按钮状态改变
         btn.isSelected = !btn.isSelected;
         
@@ -67,9 +88,12 @@ class Home_TableViewController: All_TableViewController {
     }
 
     
+    /// 右边 button + 
     func rightButClick(){
 
-        print("bbbbb");
+        let sb = UIStoryboard(name: "QrCode", bundle: nil);
+        let controller = sb.instantiateInitialViewController();
+        self.present(controller!, animated: true, completion: nil);
     }
     
     
