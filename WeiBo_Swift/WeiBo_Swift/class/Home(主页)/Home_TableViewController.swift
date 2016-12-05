@@ -75,7 +75,7 @@ class Home_TableViewController: All_TableViewController {
         //设置转场动画代理
         //如果，用默认的 modal，会把以前的控制器移除。
         //有自定义，就不会，会有两个控制器
-        cn.transitioningDelegate = popController;
+       // cn.transitioningDelegate = popController;
         //设置转场动画样式
         cn.modalPresentationStyle = UIModalPresentationStyle.custom;
         //转场方式
