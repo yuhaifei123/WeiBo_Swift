@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4D35B8EC1DA4C7F900F8FD4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D35B8EB1DA4C7F900F8FD4D /* Assets.xcassets */; };
+		4D9A8C651DF564F900A97920 /* Pop_PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A8C611DF564F900A97920 /* Pop_PresentationController.swift */; };
+		4D9A8C661DF564F900A97920 /* PopSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A8C621DF564F900A97920 /* PopSB.storyboard */; };
+		4D9A8C671DF564F900A97920 /* PopSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A8C631DF564F900A97920 /* PopSB.swift */; };
+		4D9A8C681DF564F900A97920 /* Poptroller_Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A8C641DF564F900A97920 /* Poptroller_Object.swift */; };
+		4D9A8C6A1DF5655B00A97920 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A8C691DF5655B00A97920 /* Info.plist */; };
+		4D9A8C6F1DF565C500A97920 /* All_BarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A8C6C1DF565C500A97920 /* All_BarButtonItem.swift */; };
+		4D9A8C701DF565C500A97920 /* QrCode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A8C6D1DF565C500A97920 /* QrCode.storyboard */; };
+		4D9A8C711DF565C500A97920 /* QrCode_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A8C6E1DF565C500A97920 /* QrCode_ViewController.swift */; };
 		4DB559531DA3A7C6006F73C3 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB559521DA3A7C6006F73C3 /* VisitorView.swift */; };
 		4DB559571DA3A8A4006F73C3 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB559561DA3A8A4006F73C3 /* SnapKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4DB86D1F1D61876B00D6A974 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB86D1E1D61876B00D6A974 /* AppDelegate.swift */; };
@@ -44,12 +52,19 @@
 
 /* Begin PBXFileReference section */
 		4D35B8EB1DA4C7F900F8FD4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = WeiBo_Swift/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		4D9A8C611DF564F900A97920 /* Pop_PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pop_PresentationController.swift; sourceTree = "<group>"; };
+		4D9A8C621DF564F900A97920 /* PopSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PopSB.storyboard; sourceTree = "<group>"; };
+		4D9A8C631DF564F900A97920 /* PopSB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopSB.swift; sourceTree = "<group>"; };
+		4D9A8C641DF564F900A97920 /* Poptroller_Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Poptroller_Object.swift; sourceTree = "<group>"; };
+		4D9A8C691DF5655B00A97920 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WeiBo_Swift/Info.plist; sourceTree = SOURCE_ROOT; };
+		4D9A8C6C1DF565C500A97920 /* All_BarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = All_BarButtonItem.swift; sourceTree = "<group>"; };
+		4D9A8C6D1DF565C500A97920 /* QrCode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QrCode.storyboard; sourceTree = "<group>"; };
+		4D9A8C6E1DF565C500A97920 /* QrCode_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrCode_ViewController.swift; sourceTree = "<group>"; };
 		4DB559521DA3A7C6006F73C3 /* VisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		4DB559561DA3A8A4006F73C3 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
 		4DB86D1B1D61876B00D6A974 /* WeiBo_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBo_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB86D1E1D61876B00D6A974 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DB86D281D61876B00D6A974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4DB86D2A1D61876B00D6A974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		4DB86D2F1D61876B00D6A974 /* WeiBo_SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeiBo_SwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB86D331D61876B00D6A974 /* WeiBo_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiBo_SwiftTests.swift; sourceTree = "<group>"; };
 		4DB86D351D61876B00D6A974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,6 +108,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D9A8C601DF564F900A97920 /* PopviewController */ = {
+			isa = PBXGroup;
+			children = (
+				4D9A8C611DF564F900A97920 /* Pop_PresentationController.swift */,
+				4D9A8C621DF564F900A97920 /* PopSB.storyboard */,
+				4D9A8C631DF564F900A97920 /* PopSB.swift */,
+				4D9A8C641DF564F900A97920 /* Poptroller_Object.swift */,
+			);
+			path = PopviewController;
+			sourceTree = "<group>";
+		};
+		4D9A8C6B1DF565C500A97920 /* QrCode(二维码) */ = {
+			isa = PBXGroup;
+			children = (
+				4D9A8C6C1DF565C500A97920 /* All_BarButtonItem.swift */,
+				4D9A8C6D1DF565C500A97920 /* QrCode.storyboard */,
+				4D9A8C6E1DF565C500A97920 /* QrCode_ViewController.swift */,
+			);
+			path = "QrCode(二维码)";
+			sourceTree = "<group>";
+		};
 		4DB86D121D61876B00D6A974 = {
 			isa = PBXGroup;
 			children = (
@@ -218,9 +254,9 @@
 		4DCB3F3C1D61EC4E0025466A /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				4D9A8C691DF5655B00A97920 /* Info.plist */,
 				4D35B8EB1DA4C7F900F8FD4D /* Assets.xcassets */,
 				4DB86D271D61876B00D6A974 /* LaunchScreen.storyboard */,
-				4DB86D2A1D61876B00D6A974 /* Info.plist */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -236,6 +272,8 @@
 		4DFE7FB11DA4FE840022E8CC /* tool(工具) */ = {
 			isa = PBXGroup;
 			children = (
+				4D9A8C6B1DF565C500A97920 /* QrCode(二维码) */,
+				4D9A8C601DF564F900A97920 /* PopviewController */,
 				4DFE7FB21DA4FE980022E8CC /* UIBarButtonItem_Fen.swift */,
 				4DCA8FF71DA8B6EF0071E19A /* ButtonTitle.swift */,
 			);
@@ -354,6 +392,9 @@
 			files = (
 				4D35B8EC1DA4C7F900F8FD4D /* Assets.xcassets in Resources */,
 				4DB86D291D61876B00D6A974 /* LaunchScreen.storyboard in Resources */,
+				4D9A8C6A1DF5655B00A97920 /* Info.plist in Resources */,
+				4D9A8C701DF565C500A97920 /* QrCode.storyboard in Resources */,
+				4D9A8C661DF564F900A97920 /* PopSB.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +420,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DCB3F451D61F0590025466A /* Home_TableViewController.swift in Sources */,
+				4D9A8C651DF564F900A97920 /* Pop_PresentationController.swift in Sources */,
+				4D9A8C711DF565C500A97920 /* QrCode_ViewController.swift in Sources */,
+				4D9A8C6F1DF565C500A97920 /* All_BarButtonItem.swift in Sources */,
 				4DFE7FB31DA4FE980022E8CC /* UIBarButtonItem_Fen.swift in Sources */,
 				4DCB3F3E1D61EF4B0025466A /* Main_TabBarController.swift in Sources */,
 				4DB86D1F1D61876B00D6A974 /* AppDelegate.swift in Sources */,
@@ -386,7 +430,9 @@
 				4DCB3F491D61F1510025466A /* All_TableViewController.swift in Sources */,
 				4DCB3F4B1D61F1CE0025466A /* Profile_TableViewController.swift in Sources */,
 				4DB559531DA3A7C6006F73C3 /* VisitorView.swift in Sources */,
+				4D9A8C681DF564F900A97920 /* Poptroller_Object.swift in Sources */,
 				4DCB3F4D1D61FB550025466A /* Discover_TableViewController.swift in Sources */,
+				4D9A8C671DF564F900A97920 /* PopSB.swift in Sources */,
 				4DC51E3F1D7153220075E5C9 /* Add_TableViewController.swift in Sources */,
 				4DCA8FF81DA8B6EF0071E19A /* ButtonTitle.swift in Sources */,
 			);
