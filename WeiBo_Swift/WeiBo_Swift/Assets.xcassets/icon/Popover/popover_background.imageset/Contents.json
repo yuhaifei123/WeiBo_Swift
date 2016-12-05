@@ -9,11 +9,11 @@
         "mode" : "3-part-vertical",
         "center" : {
           "mode" : "stretch",
-          "height" : 1
+          "height" : 3
         },
         "cap-insets" : {
-          "top" : 48,
-          "bottom" : 49
+          "top" : 43,
+          "bottom" : 46
         }
       },
       "idiom" : "universal",
