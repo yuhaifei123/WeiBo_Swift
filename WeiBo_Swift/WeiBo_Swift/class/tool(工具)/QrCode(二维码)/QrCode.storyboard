@@ -95,6 +95,7 @@
                         <outlet property="layoutView_Height" destination="ncB-5x-MCg" id="q8g-ih-LnP"/>
                         <outlet property="layyoutCJB_Top" destination="c0Q-KS-s6A" id="AJI-zV-52c"/>
                         <outlet property="tabBar" destination="xQ5-bg-M89" id="nuv-8I-BFg"/>
+                        <outlet property="view_QRCode" destination="GeB-2u-UiR" id="dUg-pa-fhF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Dv-3Q-415" userLabel="First Responder" sceneMemberID="firstResponder"/>

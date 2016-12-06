@@ -11,6 +11,8 @@ import UIKit
 class QrCode_ViewController: UIViewController {
     
     
+    /// 二维码 view
+    @IBOutlet weak var view_QRCode: UIView!
     /// 视图 view的高度
     @IBOutlet weak var layoutView_Height: NSLayoutConstraint!
     /// 冲击波 top
@@ -30,13 +32,25 @@ class QrCode_ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-        //
+        //冲击波的头部与 view 的高度相反
         self.layyoutCJB_Top.constant = -self.layoutView_Height.constant;
+        //牢记，就是"自动布局"里面改变了，就要刷新一下 view
+        self.view_QRCode.layoutIfNeeded();
+        //动画方法
+        UIView.animate(withDuration: 5.0, animations: {() -> Void in
+            //设置约束
+            self.layyoutCJB_Top.constant = self.layoutView_Height.constant/2;
+            //设置动画次数
+            UIView.setAnimationRepeatCount(MAXFLOAT);
+            //必须更新一下
+            self.view_QRCode.layoutIfNeeded();
+        });
     }
     
     /// 加载完成以后，触发事件
     ///
     /// - Parameter animated: <#animated description#>
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         
