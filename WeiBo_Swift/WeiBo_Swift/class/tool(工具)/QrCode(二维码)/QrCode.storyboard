@@ -45,7 +45,7 @@
                                 </constraints>
                                 <items>
                                     <tabBarItem title="二维码" image="qrcode_tabbar_icon_qrcode_highlighted" id="70L-ZX-ZmN"/>
-                                    <tabBarItem title="条形码" image="qrcode_tabbar_icon_barcode_highlighted" id="cZI-b2-Zvj"/>
+                                    <tabBarItem tag="1" title="条形码" image="qrcode_tabbar_icon_barcode_highlighted" id="cZI-b2-Zvj"/>
                                 </items>
                             </tabBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GeB-2u-UiR" userLabel="二维码框">
