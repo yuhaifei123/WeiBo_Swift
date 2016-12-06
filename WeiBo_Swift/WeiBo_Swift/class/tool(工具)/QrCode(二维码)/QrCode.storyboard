@@ -48,12 +48,38 @@
                                     <tabBarItem title="条形码" image="qrcode_tabbar_icon_barcode_highlighted" id="cZI-b2-Zvj"/>
                                 </items>
                             </tabBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GeB-2u-UiR" userLabel="二维码框">
+                                <rect key="frame" x="38" y="184" width="300" height="300"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode_border" translatesAutoresizingMaskIntoConstraints="NO" id="lXc-ZR-tAS" userLabel="边框">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode_scanline_barcode" translatesAutoresizingMaskIntoConstraints="NO" id="d6e-fr-B8I" userLabel="冲击波">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Fww-I4-wEQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="lXc-ZR-tAS" secondAttribute="bottom" id="MnW-uf-3cI"/>
+                                    <constraint firstItem="d6e-fr-B8I" firstAttribute="top" secondItem="GeB-2u-UiR" secondAttribute="top" id="c0Q-KS-s6A"/>
+                                    <constraint firstAttribute="trailing" secondItem="lXc-ZR-tAS" secondAttribute="trailing" id="chb-oD-GGa"/>
+                                    <constraint firstAttribute="height" constant="300" id="ncB-5x-MCg"/>
+                                    <constraint firstItem="d6e-fr-B8I" firstAttribute="centerX" secondItem="GeB-2u-UiR" secondAttribute="centerX" id="pLA-Bz-4dX"/>
+                                    <constraint firstItem="d6e-fr-B8I" firstAttribute="height" secondItem="GeB-2u-UiR" secondAttribute="height" id="roP-eg-ZkN"/>
+                                    <constraint firstItem="lXc-ZR-tAS" firstAttribute="top" secondItem="GeB-2u-UiR" secondAttribute="top" id="sgv-Rp-xI9"/>
+                                    <constraint firstItem="d6e-fr-B8I" firstAttribute="width" secondItem="GeB-2u-UiR" secondAttribute="width" id="tQf-O3-Ymc"/>
+                                    <constraint firstItem="lXc-ZR-tAS" firstAttribute="leading" secondItem="GeB-2u-UiR" secondAttribute="leading" id="uL8-dk-06s"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xQ5-bg-M89" firstAttribute="leading" secondItem="I0K-1h-GSD" secondAttribute="leading" id="ccf-qn-9mb"/>
                             <constraint firstItem="xKc-EQ-XeV" firstAttribute="top" secondItem="xQ5-bg-M89" secondAttribute="bottom" id="eli-2u-sGZ"/>
+                            <constraint firstItem="GeB-2u-UiR" firstAttribute="centerX" secondItem="I0K-1h-GSD" secondAttribute="centerX" id="shS-fV-zzF"/>
                             <constraint firstAttribute="trailing" secondItem="xQ5-bg-M89" secondAttribute="trailing" id="uCU-ZX-nx8"/>
+                            <constraint firstItem="GeB-2u-UiR" firstAttribute="centerY" secondItem="I0K-1h-GSD" secondAttribute="centerY" id="waG-Au-y0t"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2lQ-9f-34L">
@@ -66,6 +92,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="guanBar" destination="Wg0-YY-0uS" id="dt5-3z-jjd"/>
+                        <outlet property="layoutView_Height" destination="ncB-5x-MCg" id="q8g-ih-LnP"/>
+                        <outlet property="layyoutCJB_Top" destination="c0Q-KS-s6A" id="AJI-zV-52c"/>
                         <outlet property="tabBar" destination="xQ5-bg-M89" id="nuv-8I-BFg"/>
                     </connections>
                 </viewController>
@@ -75,6 +103,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="qrcode_border" width="51" height="51"/>
+        <image name="qrcode_scanline_barcode" width="248" height="124"/>
         <image name="qrcode_tabbar_icon_barcode_highlighted" width="40" height="40"/>
         <image name="qrcode_tabbar_icon_qrcode_highlighted" width="40" height="40"/>
     </resources>

@@ -11,6 +11,10 @@ import UIKit
 class QrCode_ViewController: UIViewController {
     
     
+    /// 视图 view的高度
+    @IBOutlet weak var layoutView_Height: NSLayoutConstraint!
+    /// 冲击波 top
+    @IBOutlet weak var layyoutCJB_Top: NSLayoutConstraint!
     /// 选择，条形码与二维码
     @IBOutlet weak var tabBar: UITabBar!
     /// 关闭 Bar
@@ -22,10 +26,12 @@ class QrCode_ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-        
+        //
+        self.layyoutCJB_Top.constant = -self.layoutView_Height.constant;
     }
     
     /// 加载完成以后，触发事件
