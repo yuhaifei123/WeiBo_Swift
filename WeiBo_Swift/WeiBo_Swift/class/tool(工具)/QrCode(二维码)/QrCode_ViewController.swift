@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QrCode_ViewController: UIViewController {
+class QrCode_ViewController: UIViewController,UITabBarDelegate{
     
     
     /// 二维码 view
@@ -32,25 +32,11 @@ class QrCode_ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-        //冲击波的头部与 view 的高度相反
-        self.layyoutCJB_Top.constant = -self.layoutView_Height.constant;
-        //牢记，就是"自动布局"里面改变了，就要刷新一下 view
-        self.view_QRCode.layoutIfNeeded();
-        //动画方法
-        UIView.animate(withDuration: 5.0, animations: {() -> Void in
-            //设置约束
-            self.layyoutCJB_Top.constant = self.layoutView_Height.constant/2;
-            //设置动画次数
-            UIView.setAnimationRepeatCount(MAXFLOAT);
-            //必须更新一下
-            self.view_QRCode.layoutIfNeeded();
-        });
-    }
+        }
     
     /// 加载完成以后，触发事件
     ///
     /// - Parameter animated: <#animated description#>
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         
@@ -65,4 +51,49 @@ class QrCode_ViewController: UIViewController {
         
         self.dismiss(animated: true, completion: nil);
     }
+    
+    
+    /// 启动动画
+    private func startAnimated (){
+    
+        //冲击波的头部与 view 的高度相反
+        self.layyoutCJB_Top.constant = -self.layoutView_Height.constant;
+        //牢记，就是"自动布局"里面改变了，就要刷新一下 view
+        self.view_QRCode.layoutIfNeeded();
+        //动画方法
+        UIView.animate(withDuration: 2.0, animations: {() -> Void in
+            //设置约束
+            self.layyoutCJB_Top.constant = 0;//self.layoutView_Height.constant * 0.1;
+            //设置动画次数
+            UIView.setAnimationRepeatCount(MAXFLOAT);
+            //必须更新一下
+            self.view_QRCode.layoutIfNeeded();
+        });
+    }
+    
+    
+    /// tabBar delegate 选择以后，触发事件
+    ///
+    /// - Parameters:
+    ///   - tabBar: <#tabBar description#>
+    ///   - item: <#item description#>
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
+        if item.tag == 1 {
+            
+            print("二维码");
+        }
+        else{
+            
+            print("条形码")
+        }
+        //先取消前面的动画
+        self.view_QRCode.layer.removeAllAnimations();
+        //在启动新的动画
+        self.startAnimated();
+    }
 }
+
+
+
+
