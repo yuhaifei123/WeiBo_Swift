@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation//二维码库
 
 class QrCode_ViewController: UIViewController,UITabBarDelegate{
     
@@ -32,7 +33,13 @@ class QrCode_ViewController: UIViewController,UITabBarDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-        }
+        self.tabBar.delegate = self;
+        
+        //冲击波动画
+        self.startAnimated();
+        
+        self.startQR();
+    }
     
     /// 加载完成以后，触发事件
     ///
@@ -43,6 +50,31 @@ class QrCode_ViewController: UIViewController,UITabBarDelegate{
         tabBar.selectedItem = tabBar.items![0];
     }
 
+    
+    /// 启动扫描二维码
+    private func startQR(){
+        
+        //判断回话里面能不能添加，输入视图
+        if self.session.canAddInput(deviceInput) == false {
+            return;
+        }
+        //同上
+        if self.session.canAddOutput(output) == false{
+            
+            return;
+        }
+        //添加
+        self.session.addInput(deviceInput);
+        self.session.addOutput(output);
+        //添加扫描类型(可以扫描所有类型)
+        self.output.metadataObjectTypes = output.availableMetadataObjectTypes;
+        //设置输出对象，代理 (在主线程里面)
+        self.output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main);
+        //添加预览视图
+        self.view.layer.insertSublayer(self.previewlayer, at: 0);
+        //启动
+        self.session.startRunning();
+    }
     
     /// 点击关闭按钮，触发事件
     ///
@@ -79,21 +111,67 @@ class QrCode_ViewController: UIViewController,UITabBarDelegate{
     ///   - item: <#item description#>
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
-        if item.tag == 1 {
-            
-            print("二维码");
+        if item.tag == 0 {
+        
+            self.layoutView_Height.constant = 300;
         }
         else{
-            
-            print("条形码")
+    
+            self.layoutView_Height.constant = 150;
         }
+        self.view_QRCode.layoutIfNeeded();
         //先取消前面的动画
         self.view_QRCode.layer.removeAllAnimations();
         //在启动新的动画
         self.startAnimated();
     }
+    
+/******************************  二维码 懒加载 **************************/
+    private lazy var session : AVCaptureSession = AVCaptureSession();//回话
+    
+    /// 拿到输入设备 因为会返回nil，所以"?"
+    private lazy var deviceInput : AVCaptureInput? = {
+    
+        //获取摄像头
+        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo);
+        
+        do{
+            let input = try AVCaptureDeviceInput(device: device);
+            return input;
+        }
+        catch{
+            
+            print(error);
+            return nil;
+        }
+    }();
+    
+    /// 输出设备
+    private lazy var output : AVCaptureMetadataOutput = AVCaptureMetadataOutput();
+    
+    //创建预览视图
+    private lazy var previewlayer : AVCaptureVideoPreviewLayer = {
+    
+        let pre = AVCaptureVideoPreviewLayer(session: self.session);
+        pre?.frame = UIScreen.main.bounds;
+        return pre!;
+    }();
 }
 
-
-
-
+/*************************** ************* 扫描二维码，输出代理 ************* ************* *************/
+extension QrCode_ViewController : AVCaptureMetadataOutputObjectsDelegate{
+    
+    
+    /// 显示二维扫描成功以后
+    ///
+    /// - Parameters:
+    ///   - captureOutput: <#captureOutput description#>
+    ///   - metadataObjects: <#metadataObjects description#>
+    ///   - connection: <#connection description#>
+    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!){
+        
+        let readableObject = metadataObjects.last as! AVMetadataMachineReadableCodeObject;
+        print(readableObject.stringValue);
+    }
+        
+}
