@@ -1,0 +1,7 @@
+platform :ios, '8.0'
+use_frameworks!
+target ‘WeiBo_SwiftTests’ do
+  pod 'AFNetworking'
+  pod 'SVProgressHUD'
+  pod 'SDWebImage'
+end
