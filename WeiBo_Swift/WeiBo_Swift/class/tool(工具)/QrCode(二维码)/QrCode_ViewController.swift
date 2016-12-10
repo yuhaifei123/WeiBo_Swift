@@ -48,6 +48,7 @@ class QrCode_ViewController: UIViewController,UITabBarDelegate{
         super.viewDidAppear(animated);
         
         tabBar.selectedItem = tabBar.items![0];
+        
     }
 
     
@@ -70,8 +71,10 @@ class QrCode_ViewController: UIViewController,UITabBarDelegate{
         self.output.metadataObjectTypes = output.availableMetadataObjectTypes;
         //设置输出对象，代理 (在主线程里面)
         self.output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main);
+         self.previewlayer.addSublayer(self.drawLayer);
         //添加预览视图
         self.view.layer.insertSublayer(self.previewlayer, at: 0);
+        
         //启动
         self.session.startRunning();
     }
@@ -144,19 +147,30 @@ class QrCode_ViewController: UIViewController,UITabBarDelegate{
             print(error);
             return nil;
         }
+
     }();
     
     /// 输出设备
     private lazy var output : AVCaptureMetadataOutput = AVCaptureMetadataOutput();
     
     //创建预览视图
-    private lazy var previewlayer : AVCaptureVideoPreviewLayer = {
+    public lazy var previewlayer : AVCaptureVideoPreviewLayer = {
     
         let pre = AVCaptureVideoPreviewLayer(session: self.session);
         pre?.frame = UIScreen.main.bounds;
         return pre!;
     }();
+    
+    
+    /// 创建用于绘制边线的图层
+    public lazy var drawLayer : CALayer = {
+    
+        let draw = CALayer();
+        draw.frame = UIScreen.main.bounds;
+        return draw;
+    }();
 }
+
 
 /*************************** ************* 扫描二维码，输出代理 ************* ************* *************/
 extension QrCode_ViewController : AVCaptureMetadataOutputObjectsDelegate{
@@ -170,8 +184,75 @@ extension QrCode_ViewController : AVCaptureMetadataOutputObjectsDelegate{
     ///   - connection: <#connection description#>
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!){
         
-        let readableObject = metadataObjects.last as! AVMetadataMachineReadableCodeObject;
-        print(readableObject.stringValue);
+        //清空所以视图
+        self.clearConers();
+        //得到坐标
+        for object in metadataObjects {
+            
+            //如果是可识别的机器码
+            if object is AVMetadataMachineReadableCodeObject{
+                
+                //将坐标转换可以识别
+                let codeObject = previewlayer.transformedMetadataObject(for:object as! AVMetadataObject) as! AVMetadataMachineReadableCodeObject;
+                print(codeObject);
+                
+                drowCorners(codeObject: codeObject);
+            }
+        }
     }
+    
+    
+    /// 绘画边框
+    ///
+    /// - Parameter codeObject: <#codeObject description#>
+    private func drowCorners( codeObject : AVMetadataMachineReadableCodeObject){
         
+        if codeObject.corners.isEmpty {
+            return;
+        }
+        
+        //创建一个图层
+        let layer = CAShapeLayer();
+        layer.lineWidth = 2;//边框的宽度
+        layer.strokeColor = UIColor.red.cgColor;//边框是红色
+        layer.fillColor = UIColor.clear.cgColor;//透明的，里面
+        let path = UIBezierPath();
+    
+        //画开始点线
+        let dicMove : Dictionary<String,AnyObject> = codeObject.corners[0] as! Dictionary<String,AnyObject>;
+        let x : CGFloat = dicMove["X"] as! CGFloat;
+        let y : CGFloat = dicMove["Y"] as! CGFloat;
+        path.move(to: CGPoint(x: x, y: y));
+        
+        //画其他3个线
+        for i in 1..<4{
+            
+            let dicMove : Dictionary<String,AnyObject> = codeObject.corners[i] as! Dictionary<String,AnyObject>;
+            let x : CGFloat = dicMove["X"] as! CGFloat;
+            let y : CGFloat = dicMove["Y"] as! CGFloat;
+            path.addLine(to: CGPoint(x: x, y: y));
+        }
+        //关闭
+        path.close();
+        //赋值
+        layer.path = path.cgPath;
+        
+        drawLayer.addSublayer(layer);
+    }
+    
+  
+    /// 清空边线
+    private func clearConers(){
+        
+        //判断drawlayer上是否有其他图层
+        if drawLayer.sublayers == nil || drawLayer.sublayers?.count == 0 {
+            return;
+        }
+        
+        //移除所有视图
+        for sublayer in drawLayer.sublayers! {
+        
+            sublayer.removeFromSuperlayer();
+        }
+    }
 }
