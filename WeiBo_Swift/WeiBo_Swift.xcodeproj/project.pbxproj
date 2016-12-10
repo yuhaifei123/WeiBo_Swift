@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D35B8EC1DA4C7F900F8FD4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D35B8EB1DA4C7F900F8FD4D /* Assets.xcassets */; };
+		4D70820C1DF7A4AE00C491A6 /* ww.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D70820B1DF7A4AE00C491A6 /* ww.m */; };
 		4D9A8C651DF564F900A97920 /* Pop_PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A8C611DF564F900A97920 /* Pop_PresentationController.swift */; };
 		4D9A8C661DF564F900A97920 /* PopSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A8C621DF564F900A97920 /* PopSB.storyboard */; };
 		4D9A8C671DF564F900A97920 /* PopSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A8C631DF564F900A97920 /* PopSB.swift */; };
@@ -52,6 +53,9 @@
 
 /* Begin PBXFileReference section */
 		4D35B8EB1DA4C7F900F8FD4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = WeiBo_Swift/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		4D7082091DF7A4AD00C491A6 /* WeiBo_Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeiBo_Swift-Bridging-Header.h"; sourceTree = "<group>"; };
+		4D70820A1DF7A4AE00C491A6 /* ww.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ww.h; sourceTree = "<group>"; };
+		4D70820B1DF7A4AE00C491A6 /* ww.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ww.m; sourceTree = "<group>"; };
 		4D9A8C611DF564F900A97920 /* Pop_PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pop_PresentationController.swift; sourceTree = "<group>"; };
 		4D9A8C621DF564F900A97920 /* PopSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PopSB.storyboard; sourceTree = "<group>"; };
 		4D9A8C631DF564F900A97920 /* PopSB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopSB.swift; sourceTree = "<group>"; };
@@ -125,6 +129,9 @@
 				4D9A8C6C1DF565C500A97920 /* All_BarButtonItem.swift */,
 				4D9A8C6D1DF565C500A97920 /* QrCode.storyboard */,
 				4D9A8C6E1DF565C500A97920 /* QrCode_ViewController.swift */,
+				4D70820A1DF7A4AE00C491A6 /* ww.h */,
+				4D70820B1DF7A4AE00C491A6 /* ww.m */,
+				4D7082091DF7A4AD00C491A6 /* WeiBo_Swift-Bridging-Header.h */,
 			);
 			path = "QrCode(二维码)";
 			sourceTree = "<group>";
@@ -350,7 +357,7 @@
 					4DB86D1A1D61876B00D6A974 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 37QV6Q6Y3Y;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 					4DB86D2E1D61876B00D6A974 = {
@@ -419,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D70820C1DF7A4AE00C491A6 /* ww.m in Sources */,
 				4DCB3F451D61F0590025466A /* Home_TableViewController.swift in Sources */,
 				4D9A8C651DF564F900A97920 /* Pop_PresentationController.swift in Sources */,
 				4D9A8C711DF565C500A97920 /* QrCode_ViewController.swift in Sources */,
@@ -571,6 +579,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 37QV6Q6Y3Y;
@@ -583,6 +592,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "YUHF.WeiBo-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WeiBo_Swift/class/tool(工具)/QrCode(二维码)/WeiBo_Swift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -591,6 +602,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 37QV6Q6Y3Y;
@@ -605,6 +617,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "WeiBo_Swift/class/tool(工具)/QrCode(二维码)/WeiBo_Swift-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
