@@ -23,7 +23,6 @@ class VisitorView: UIView {
 
     var delegate : VisitorViewDelegate?;
 
-
     //获取屏幕大小
     var bou:CGRect = UIScreen.main.bounds;
 

@@ -10,7 +10,7 @@ import UIKit
 
 class All_TableViewController: UITableViewController,VisitorViewDelegate{
 
-    var isLogin : Bool = true;
+    var isLogin : Bool = false;
     var visitorView : VisitorView?;
 
     override func loadView() {
@@ -32,10 +32,15 @@ class All_TableViewController: UITableViewController,VisitorViewDelegate{
     }
     
     func loginBtnWillClick() {
-        print("aaaa");
+     
+        let nav = UINavigationController(rootViewController: oauth);
+        present(nav, animated: true, completion: nil);
     }
 
     func registerBtnWillClick() {
         print("bbbb");
     }
+    
+    private lazy var oauth : OAuth_ViewController = OAuth_ViewController();
+    
 }
