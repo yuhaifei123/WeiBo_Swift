@@ -31,6 +31,7 @@
 		4DCB3F491D61F1510025466A /* All_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB3F481D61F1510025466A /* All_TableViewController.swift */; };
 		4DCB3F4B1D61F1CE0025466A /* Profile_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB3F4A1D61F1CE0025466A /* Profile_TableViewController.swift */; };
 		4DCB3F4D1D61FB550025466A /* Discover_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB3F4C1D61FB550025466A /* Discover_TableViewController.swift */; };
+		4DF7D9581DFE3E55004CCB47 /* Pods_WeiBo_SwiftTests.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 996608A3F22E9EC5C0F11683 /* Pods_WeiBo_SwiftTests.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4DFE7FB31DA4FE980022E8CC /* UIBarButtonItem_Fen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFE7FB21DA4FE980022E8CC /* UIBarButtonItem_Fen.swift */; };
 		7A4E0ACAB2229DFF5275F96D /* Pods_WeiBo_SwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996608A3F22E9EC5C0F11683 /* Pods_WeiBo_SwiftTests.framework */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,19 @@
 			remoteInfo = WeiBo_Swift;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4DF7D9571DFE3E45004CCB47 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4DF7D9581DFE3E55004CCB47 /* Pods_WeiBo_SwiftTests.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		48B01B84ECB5AD080CB92982 /* Pods-WeiBo_SwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeiBo_SwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeiBo_SwiftTests/Pods-WeiBo_SwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -322,6 +336,7 @@
 				4DB86D171D61876B00D6A974 /* Sources */,
 				4DB86D181D61876B00D6A974 /* Frameworks */,
 				4DB86D191D61876B00D6A974 /* Resources */,
+				4DF7D9571DFE3E45004CCB47 /* CopyFiles */,
 			);
 			buildRules = (
 			);
