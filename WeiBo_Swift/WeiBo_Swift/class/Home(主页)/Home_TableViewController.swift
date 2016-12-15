@@ -12,7 +12,7 @@ class Home_TableViewController: All_TableViewController {
 
     //标题 button
     let titleButton = ButtonTitle();
-    var isOpen : Bool = false;
+    var isOpen : Bool = true;
     
     override func viewDidLoad() {
         super.viewDidLoad()
