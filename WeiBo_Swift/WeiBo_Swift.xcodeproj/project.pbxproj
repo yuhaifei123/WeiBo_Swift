@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D07B1BD1E0239EF0086ECEE /* OAuth_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D07B1BC1E0239EF0086ECEE /* OAuth_ViewController.swift */; };
 		4D35B8EC1DA4C7F900F8FD4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D35B8EB1DA4C7F900F8FD4D /* Assets.xcassets */; };
 		4D70820C1DF7A4AE00C491A6 /* ww.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D70820B1DF7A4AE00C491A6 /* ww.m */; };
 		4D9A8C651DF564F900A97920 /* Pop_PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A8C611DF564F900A97920 /* Pop_PresentationController.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		48B01B84ECB5AD080CB92982 /* Pods-WeiBo_SwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeiBo_SwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeiBo_SwiftTests/Pods-WeiBo_SwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4D07B1BC1E0239EF0086ECEE /* OAuth_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth_ViewController.swift; sourceTree = "<group>"; };
 		4D35B8EB1DA4C7F900F8FD4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = WeiBo_Swift/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		4D7082091DF7A4AD00C491A6 /* WeiBo_Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeiBo_Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		4D70820A1DF7A4AE00C491A6 /* ww.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ww.h; sourceTree = "<group>"; };
@@ -131,6 +133,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D07B1BB1E0239D10086ECEE /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				4D07B1BC1E0239EF0086ECEE /* OAuth_ViewController.swift */,
+			);
+			path = OAuth;
+			sourceTree = "<group>";
+		};
 		4D9A8C601DF564F900A97920 /* PopviewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +229,7 @@
 		4DCB3F341D61E94F0025466A /* class */ = {
 			isa = PBXGroup;
 			children = (
+				4D07B1BB1E0239D10086ECEE /* OAuth */,
 				4DC51E3D1D7152F90075E5C9 /* add(添加按钮) */,
 				4DCB3F431D61EFFD0025466A /* Home(主页) */,
 				4DCB3F361D61EC3A0025466A /* Common(共同) */,
@@ -516,6 +527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D07B1BD1E0239EF0086ECEE /* OAuth_ViewController.swift in Sources */,
 				4D70820C1DF7A4AE00C491A6 /* ww.m in Sources */,
 				4DCB3F451D61F0590025466A /* Home_TableViewController.swift in Sources */,
 				4D9A8C651DF564F900A97920 /* Pop_PresentationController.swift in Sources */,
@@ -678,7 +690,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = WeiBo_Swift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "YUHF.WeiBo-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -701,7 +713,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = WeiBo_Swift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "YUHF.WeiBo-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
