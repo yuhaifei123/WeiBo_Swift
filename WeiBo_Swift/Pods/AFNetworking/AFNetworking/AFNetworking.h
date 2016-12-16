@@ -22,7 +22,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Availability.h>
-#import <TargetConditionals.h>
+#import <TargetConditionals.h
 
 #ifndef _AFNETWORKING_
     #define _AFNETWORKING_
