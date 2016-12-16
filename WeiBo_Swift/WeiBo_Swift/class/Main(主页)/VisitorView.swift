@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 ///swift 中的协议
 protocol VisitorViewDelegate : NSObjectProtocol{
