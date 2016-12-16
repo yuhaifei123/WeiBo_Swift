@@ -56,7 +56,6 @@ class OAuth_ViewController: UIViewController {
     }
     
     //MARK -- 懒加载
-    
     private lazy var webView : UIWebView = {
     
         let webView = UIWebView();
@@ -94,7 +93,7 @@ extension OAuth_ViewController :UIWebViewDelegate{
                 //截取 code
                 let array_code : Array<String?> = string_url!.components(separatedBy: string_code);
                 code = array_code[1];
-                
+                access_token();
                 return false;
             }
             //取消授权
@@ -102,6 +101,35 @@ extension OAuth_ViewController :UIWebViewDelegate{
         
         return true;
     }
+    
+    
+    /// 获取授权过的Access Token
+    private func access_token(){
+        
+        let string_url : String = "oauth2/access_token";
+        let parametersa : Dictionary = ["client_id":App_Key,"client_secret" : App_Secret,"grant_type" : "authorization_code","code" : code, "redirect_uri" : webURL];
+        
+        AFNetworkTools.shareNetwork().post(string_url, parameters: parametersa, progress: {
+            (Progress) -> Void in
+            
+        }, success: {
+                (_, JSON) -> Void in
+            
+            let accessToken_Model = AccessToken_Model(dic: JSON as! [String : AnyObject]);
+            accessToken_Model.saveAccessToken();
+            print(accessToken_Model);
+            
+            print("------- 拿数据 ------");
+            let a = AccessToken_Model.loadAccessToken();
+            print(a);
+            
+        }, failure: {
+            (URLSessionDataTask, Error) -> Void in
+            
+            print(Error as! String);
+        });
+    }
+    
 }
 
 
