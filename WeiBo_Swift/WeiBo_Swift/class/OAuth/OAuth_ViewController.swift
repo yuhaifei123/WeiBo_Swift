@@ -133,12 +133,21 @@ extension OAuth_ViewController :UIWebViewDelegate{
             (_, JSON) -> Void in
             
             let accessToken_Model = AccessToken_Model(dic: JSON as! [String : AnyObject]);
-            accessToken_Model.saveAccessToken();
-            print(accessToken_Model);
+            //获得用户详细信息
+            accessToken_Model.loadUserInfo(finished: { (accessTokenModel, Error) -> (Void) in
+                
+                if accessTokenModel != nil {
+                    accessToken_Model.saveAccessToken();
+                }
+                
+                SVProgressHUD.showInfo(withStatus: "网络不给力");
+                
+                print("------- 拿数据 ------");
+                let acc = AccessToken_Model.loadAccessToken();
+                print(acc);
+            });
             
-            print("------- 拿数据 ------");
-            let a = AccessToken_Model.loadAccessToken();
-            print(a);
+            
             
         }, failure: {
             (URLSessionDataTask, Error) -> Void in
