@@ -103,6 +103,23 @@ extension OAuth_ViewController :UIWebViewDelegate{
     }
     
     
+    /// 开始加载 webview 时 调用方法
+    ///
+    /// - Parameter webView: <#webView description#>
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        
+        SVProgressHUD.showInfo(withStatus: "正在加载");
+    }
+    
+    /// 结束加载 webview 时 调用方法
+    ///
+    /// - Parameter webView: <#webView description#>
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        
+        //关闭
+        SVProgressHUD.dismiss();
+    }
+    
     /// 获取授权过的Access Token
     private func access_token(){
         
@@ -113,7 +130,7 @@ extension OAuth_ViewController :UIWebViewDelegate{
             (Progress) -> Void in
             
         }, success: {
-                (_, JSON) -> Void in
+            (_, JSON) -> Void in
             
             let accessToken_Model = AccessToken_Model(dic: JSON as! [String : AnyObject]);
             accessToken_Model.saveAccessToken();
