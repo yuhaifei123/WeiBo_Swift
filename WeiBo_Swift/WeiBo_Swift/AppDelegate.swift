@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds);
         window?.backgroundColor = UIColor.white;
-        window?.rootViewController = Main_TabBarController();
+        window?.rootViewController = Newfeature_CollectionViewController(); //Main_TabBarController();
 
         window?.makeKeyAndVisible();
 
