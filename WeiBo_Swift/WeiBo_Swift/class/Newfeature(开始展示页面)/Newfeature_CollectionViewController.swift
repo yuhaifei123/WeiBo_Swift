@@ -84,10 +84,35 @@ class Newfeature_CollectionViewController: UICollectionViewController {
         cell.imgeIndex = indexPath.item;
         return cell
     }
+    
+    
+    /// 完全显示一个cell之后调用
+    ///
+    /// - Parameters:
+    ///   - collectionView: <#collectionView description#>
+    ///   - cell: <#cell description#>
+    ///   - indexPath: <#indexPath description#>
+    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        // 1.拿到当前显示的cell对应的索引
+        let path = collectionView.indexPathsForVisibleItems.last!;
+        let  cell : Newfeature_CollectionViewController_Cell = collectionView.cellForItem(at: path) as! Newfeature_CollectionViewController_Cell;
+        
+        if path.item == (cellIndex - 1) {
+           
+            cell.loginButton.isHidden = false;
+            cell.startBtnAnimation();
+           
+            return;
+        }
+        
+        cell.loginButton.isHidden = true;
+    }
 }
 
 
 /// 设置 cell
+///// 如果当前类需要监听按钮的点击方法, 那么当前类不是是私有的
 class Newfeature_CollectionViewController_Cell : UICollectionViewCell{
     
      var imgeIndex : Int? {
@@ -105,23 +130,63 @@ class Newfeature_CollectionViewController_Cell : UICollectionViewCell{
         setupUI();
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    /// 点击登录按钮触发事件
+    func clickLoginButton(){
+        
+        print("点击我干嘛")
+    };
     
     /// 初始化UI
     private func setupUI(){
         
         //用这个 view，不加进去的话，有时候是控制器 view 的改变，他不改变，比如，uitaleview 中删除单行
         contentView.addSubview(iconView);
+        contentView.addSubview(loginButton);
         // 2.布局子控件的位置
         iconView.xmg_Fill(contentView);
+        loginButton.xmg_AlignInner(type: XMG_AlignType.bottomCenter, referView: contentView, size: nil, offset: CGPoint(x: 0, y: -160));
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
+    /// button 的动画，一点点变大的动画
+    public func startBtnAnimation(){
+    
+        // 执行动画(默认是啥也没有的) 变形
+        loginButton.transform = CGAffineTransform(scaleX: 0.0, y: 0.0);
+        //不能有触发事件
+        loginButton.isUserInteractionEnabled = false;
+        // withDuration 时间，delay 延时，options： 选择枚举，啥动画，usingSpringWithDamping: 放大效果（1.0 最小），options：放大的速度（速度越大，动画幅度越大）
+        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: UIViewAnimationOptions(rawValue: 0), animations: {
+            () -> Void in
+            
+            //回到默认的大小 CGAffineTransform 变形
+            self.loginButton.transform = CGAffineTransform.identity;
+            
+        }, completion: {
+            (Bool) -> Void in
+            self.loginButton.isUserInteractionEnabled = true;
+        });
+    }
+
     
   // private let iconView = UIImageView();
     private lazy var iconView = UIImageView();
+    
+    public lazy var loginButton : UIButton = {
+        
+        let button = UIButton();
+        button.setBackgroundImage(UIImage(named: "new_feature_button"), for: UIControlState());
+        button.setBackgroundImage(UIImage(named: "new_feature_button_highlighted"), for: UIControlState.highlighted);
+        button.isHidden = true;
+        button.addTarget(self, action: #selector(Newfeature_CollectionViewController_Cell.clickLoginButton), for: UIControlEvents.touchUpInside);
+        
+        return button;
+    }();
+    
 }
 
 /// 设置内部方法，来设置 Layout
