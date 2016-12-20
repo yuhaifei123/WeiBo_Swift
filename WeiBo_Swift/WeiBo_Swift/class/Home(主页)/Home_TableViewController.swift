@@ -12,7 +12,7 @@ class Home_TableViewController: All_TableViewController {
 
     //标题 button
     let titleButton = ButtonTitle();
-    var isOpen : Bool = true;
+    var isOpen : Bool = AccessToken_Model.userLogin();
     
     override func viewDidLoad() {
         super.viewDidLoad()
