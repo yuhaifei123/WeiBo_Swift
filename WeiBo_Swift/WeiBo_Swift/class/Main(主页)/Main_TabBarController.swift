@@ -96,8 +96,4 @@ class Main_TabBarController: UITabBarController {
         return button;
     }();
 
-
-
-
-
 }

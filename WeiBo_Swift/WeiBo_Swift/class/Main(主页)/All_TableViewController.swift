@@ -10,7 +10,7 @@ import UIKit
 
 class All_TableViewController: UITableViewController,VisitorViewDelegate{
 
-    var isLogin : Bool = false;
+    var isLogin : Bool = AccessToken_Model.userLogin();
     var visitorView : VisitorView?;
 
     override func loadView() {
@@ -38,7 +38,15 @@ class All_TableViewController: UITableViewController,VisitorViewDelegate{
     }
 
     func registerBtnWillClick() {
-        print("bbbb");
+        
+        let a = "aaa.plsti";
+        print("\(a.tmpDir())");
+        
+        let b = "bb.doc";
+        print("\(b.docDir())");
+        
+        let c = "cc.mp4";
+        print("\(c.tmpDir())");
     }
     
     private lazy var oauth : OAuth_ViewController = OAuth_ViewController();
