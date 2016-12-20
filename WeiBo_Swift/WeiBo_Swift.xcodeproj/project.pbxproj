@@ -58,6 +58,8 @@
 		4DCB3F491D61F1510025466A /* All_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB3F481D61F1510025466A /* All_TableViewController.swift */; };
 		4DCB3F4B1D61F1CE0025466A /* Profile_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB3F4A1D61F1CE0025466A /* Profile_TableViewController.swift */; };
 		4DCB3F4D1D61FB550025466A /* Discover_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB3F4C1D61FB550025466A /* Discover_TableViewController.swift */; };
+		4DDA572E1E090C41005F4359 /* Newfeature_CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDA572D1E090C41005F4359 /* Newfeature_CollectionViewController.swift */; };
+		4DDA57321E091B90005F4359 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDA57311E091B90005F4359 /* UIView+AutoLayout.swift */; };
 		4DFE7FB31DA4FE980022E8CC /* UIBarButtonItem_Fen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFE7FB21DA4FE980022E8CC /* UIBarButtonItem_Fen.swift */; };
 /* End PBXBuildFile section */
 
@@ -159,6 +161,8 @@
 		4DCB3F481D61F1510025466A /* All_TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = All_TableViewController.swift; sourceTree = "<group>"; };
 		4DCB3F4A1D61F1CE0025466A /* Profile_TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile_TableViewController.swift; sourceTree = "<group>"; };
 		4DCB3F4C1D61FB550025466A /* Discover_TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Discover_TableViewController.swift; sourceTree = "<group>"; };
+		4DDA572D1E090C41005F4359 /* Newfeature_CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Newfeature_CollectionViewController.swift; sourceTree = "<group>"; };
+		4DDA57311E091B90005F4359 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		4DFE7FB21DA4FE980022E8CC /* UIBarButtonItem_Fen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem_Fen.swift; sourceTree = "<group>"; };
 		EADC5038FE05A366EA8097F9 /* Pods-WeiBo_SwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeiBo_SwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeiBo_SwiftTests/Pods-WeiBo_SwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -331,8 +335,8 @@
 			children = (
 				4DBFE6E01E03B80800C555C1 /* WeiBo_Swift-Bridging-Header.h */,
 				4DB86D1E1D61876B00D6A974 /* AppDelegate.swift */,
-				4DFE7FB11DA4FE840022E8CC /* tool(工具) */,
 				4DCB3F341D61E94F0025466A /* class */,
+				4DFE7FB11DA4FE840022E8CC /* tool(工具) */,
 				4DCB3F3C1D61EC4E0025466A /* Other */,
 				4DCB3F351D61E95D0025466A /* lib */,
 			);
@@ -368,14 +372,15 @@
 		4DCB3F341D61E94F0025466A /* class */ = {
 			isa = PBXGroup;
 			children = (
+				4DDA572C1E090C1B005F4359 /* Newfeature(开始展示页面) */,
 				4D07B1BB1E0239D10086ECEE /* OAuth */,
 				4DC51E3D1D7152F90075E5C9 /* add(添加按钮) */,
 				4DCB3F431D61EFFD0025466A /* Home(主页) */,
 				4DCB3F361D61EC3A0025466A /* Common(共同) */,
 				4DCB3F371D61EC3A0025466A /* Discover(发现) */,
 				4DCB3F381D61EC3A0025466A /* Main(主页) */,
-				4DCB3F391D61EC3A0025466A /* Message(消息) */,
 				4DCB3F3A1D61EC3A0025466A /* Profile(我) */,
+				4DCB3F391D61EC3A0025466A /* Message(消息) */,
 			);
 			path = class;
 			sourceTree = "<group>";
@@ -450,9 +455,18 @@
 			path = "Home(主页)";
 			sourceTree = "<group>";
 		};
+		4DDA572C1E090C1B005F4359 /* Newfeature(开始展示页面) */ = {
+			isa = PBXGroup;
+			children = (
+				4DDA572D1E090C41005F4359 /* Newfeature_CollectionViewController.swift */,
+			);
+			path = "Newfeature(开始展示页面)";
+			sourceTree = "<group>";
+		};
 		4DFE7FB11DA4FE840022E8CC /* tool(工具) */ = {
 			isa = PBXGroup;
 			children = (
+				4DDA57311E091B90005F4359 /* UIView+AutoLayout.swift */,
 				4D9A8C6B1DF565C500A97920 /* QrCode(二维码) */,
 				4D9A8C601DF564F900A97920 /* PopviewController */,
 				4DFE7FB21DA4FE980022E8CC /* UIBarButtonItem_Fen.swift */,
@@ -683,11 +697,13 @@
 				4D9A8C711DF565C500A97920 /* QrCode_ViewController.swift in Sources */,
 				4DBFE6E41E03D27200C555C1 /* AccessToken_Model.swift in Sources */,
 				4D9A8C6F1DF565C500A97920 /* All_BarButtonItem.swift in Sources */,
+				4DDA572E1E090C41005F4359 /* Newfeature_CollectionViewController.swift in Sources */,
 				4D30AEE51E07AF8B00C4503A /* AFImageDownloader.m in Sources */,
 				4DFE7FB31DA4FE980022E8CC /* UIBarButtonItem_Fen.swift in Sources */,
 				4DCB3F3E1D61EF4B0025466A /* Main_TabBarController.swift in Sources */,
 				4D30AEE11E07AF8B00C4503A /* AFURLSessionManager.m in Sources */,
 				4DB86D1F1D61876B00D6A974 /* AppDelegate.swift in Sources */,
+				4DDA57321E091B90005F4359 /* UIView+AutoLayout.swift in Sources */,
 				4D30AEFF1E07AFBA00C4503A /* SVProgressHUD.m in Sources */,
 				4D30AEE61E07AF8B00C4503A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				4DCB3F471D61F07B0025466A /* Message_TableViewController.swift in Sources */,
