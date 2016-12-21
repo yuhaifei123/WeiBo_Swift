@@ -137,7 +137,7 @@ class Newfeature_CollectionViewController_Cell : UICollectionViewCell{
     /// 点击登录按钮触发事件
     func clickLoginButton(){
         
-        print("点击我干嘛")
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: SwitchRootViewControllerKey), object: true, userInfo: nil);
     };
     
     /// 初始化UI
