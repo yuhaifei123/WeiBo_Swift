@@ -8,8 +8,18 @@
 
 import UIKit
 
+let HomeReuseIdentifier = "HomeReuseIdentifier";
+
 class Home_TableViewController: All_TableViewController {
 
+    /// tableView Cell 数据
+    var arrray_Status : [Status]? {
+        // 当 arrray_Status 有值后，就调用此方法
+        didSet{
+            tableView.reloadData();
+        }
+    }
+    
     //标题 button
     let titleButton = ButtonTitle();
     var isOpen : Bool = AccessToken_Model.userLogin();
@@ -17,21 +27,33 @@ class Home_TableViewController: All_TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         if isLogin == false {
 
             visitorView?.setupVisitorView(ishome: true, imageName: "visitordiscover_feed_image_house", message: "关注一些人，回这里看看有什么惊喜");
         }
         else{
-
             navButton();
         }
-        
         
         /// 接受广播
         let notName = NSNotification.Name(rawValue:"notifyChatMsgRecv");
         NotificationCenter.default.addObserver(self, selector: #selector(self.radioClass(notification:)), name: notName, object: nil);
+        
+        // 注册一个cell
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: HomeReuseIdentifier)
     }
     
+    
+    /// 页面加载时，加载数据
+    ///
+    /// - Parameter animated: <#animated description#>
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        
+        // 4.加载微博数据
+        loadData()
+    }
     
     /// 接受广播方法
     ///
@@ -46,6 +68,20 @@ class Home_TableViewController: All_TableViewController {
         }
     }
 
+    /// 加载微博数据
+    func loadData(){
+        
+        let status = Status();
+        status.loadStatuses (finished: {
+            (any, error) in
+            
+            if error != nil{
+                return;
+            }
+            self.arrray_Status = any;
+        });
+    }
+    
     ///登陆成功了，就是设置navitem的按钮
     private func navButton(){
 
@@ -65,7 +101,7 @@ class Home_TableViewController: All_TableViewController {
     /// 点击 button 后触发事件
     ///
     /// - Parameter btn: <#btn description#>
-    @objc private func titeButton(btn : UIButton){
+    func titeButton(btn : UIButton){
         
         //按钮状态改变
         btn.isSelected = !btn.isSelected;
@@ -82,11 +118,12 @@ class Home_TableViewController: All_TableViewController {
         self.present(cn, animated: true, completion: nil);
     }
 
+    
+    /// 点击左边按钮
     func  leftBtnClick(){
 
         print("aaaa");
     }
-
     
     /// 右边 button + 
     func rightButClick(){
@@ -105,4 +142,34 @@ class Home_TableViewController: All_TableViewController {
 }
 
 
+// MARK: - uitableView 属性
+extension Home_TableViewController{
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrray_Status?.count ?? 0
+    }
+    
+    /**
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // 1.获取cell
+        let cell = tableView.dequeueReusableCellWithIdentifier(XMGHomeReuseIdentifier, forIndexPath: indexPath)
+        // 2.设置数据
+        let status = arrray_Status![indexPath.row]
+        cell.textLabel?.text = status.text
+        // 3.返回cell
+        return cell
+    }
+ */
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      
+        // 1.获取cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomeReuseIdentifier, for: indexPath)
+        // 2.设置数据
+        let status = arrray_Status![indexPath.row]
+        cell.textLabel?.text = status.text
+        // 3.返回cell
+        return cell
+    }
+}
 
