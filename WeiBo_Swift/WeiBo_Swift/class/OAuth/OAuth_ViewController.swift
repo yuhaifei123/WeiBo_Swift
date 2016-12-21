@@ -138,6 +138,10 @@ extension OAuth_ViewController :UIWebViewDelegate{
                 
                 if accessTokenModel != nil {
                     accessToken_Model.saveAccessToken();
+                    // 去欢迎界面
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: SwitchRootViewControllerKey), object: false, userInfo: nil);
+                    
+                    return;
                 }
                 
                 SVProgressHUD.showInfo(withStatus: "网络不给力");

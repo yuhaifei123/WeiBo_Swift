@@ -147,8 +147,8 @@ class AccessToken_Model: NSObject, NSCoding{
             if JSON != nil {
                 
                 let dic : [String : AnyObject] = JSON as! [String : AnyObject];
-                self.avatar_large = dic["screen_name"] as! String?;
-                self.screen_name = dic["avatar_large"] as! String?;
+                self.avatar_large = dic["avatar_large"] as! String?;
+                self.screen_name = dic["screen_name"] as! String?;
                 
                 finished(self, nil);
             }
