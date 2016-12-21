@@ -34,6 +34,7 @@
 		4D30AEFF1E07AFBA00C4503A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D30AEF71E07AFBA00C4503A /* SVProgressHUD.m */; };
 		4D30AF001E07AFBA00C4503A /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D30AEF91E07AFBA00C4503A /* SVRadialGradientLayer.m */; };
 		4D35B8EC1DA4C7F900F8FD4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D35B8EB1DA4C7F900F8FD4D /* Assets.xcassets */; };
+		4D90DB971E0A6B270010177D /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90DB961E0A6B270010177D /* Status.swift */; };
 		4D9A8C651DF564F900A97920 /* Pop_PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A8C611DF564F900A97920 /* Pop_PresentationController.swift */; };
 		4D9A8C661DF564F900A97920 /* PopSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A8C621DF564F900A97920 /* PopSB.storyboard */; };
 		4D9A8C671DF564F900A97920 /* PopSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A8C631DF564F900A97920 /* PopSB.swift */; };
@@ -148,6 +149,7 @@
 		4D30AEF81E07AFBA00C4503A /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		4D30AEF91E07AFBA00C4503A /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		4D35B8EB1DA4C7F900F8FD4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = WeiBo_Swift/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		4D90DB961E0A6B270010177D /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		4D9A8C611DF564F900A97920 /* Pop_PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pop_PresentationController.swift; sourceTree = "<group>"; };
 		4D9A8C621DF564F900A97920 /* PopSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PopSB.storyboard; sourceTree = "<group>"; };
 		4D9A8C631DF564F900A97920 /* PopSB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopSB.swift; sourceTree = "<group>"; };
@@ -335,6 +337,14 @@
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
+		4D90DB951E0A6B0C0010177D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				4D90DB961E0A6B270010177D /* Status.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		4D9A8C601DF564F900A97920 /* PopviewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,6 +511,7 @@
 			isa = PBXGroup;
 			children = (
 				4DCB3F441D61F0590025466A /* Home_TableViewController.swift */,
+				4D90DB951E0A6B0C0010177D /* model */,
 			);
 			path = "Home(主页)";
 			sourceTree = "<group>";
@@ -794,6 +805,7 @@
 				4DFC95431E0A496B008D17C1 /* SDWebImageDecoder.m in Sources */,
 				4D9A8C651DF564F900A97920 /* Pop_PresentationController.swift in Sources */,
 				4D30AEEA1E07AF8B00C4503A /* UIProgressView+AFNetworking.m in Sources */,
+				4D90DB971E0A6B270010177D /* Status.swift in Sources */,
 				4D9A8C711DF565C500A97920 /* QrCode_ViewController.swift in Sources */,
 				4DBFE6E41E03D27200C555C1 /* AccessToken_Model.swift in Sources */,
 				4D9A8C6F1DF565C500A97920 /* All_BarButtonItem.swift in Sources */,
