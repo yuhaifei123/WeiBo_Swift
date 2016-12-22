@@ -20,6 +20,7 @@ class Status: NSObject{
     var source: String?
     /// 配图数组
     var pic_urls: [[String: AnyObject]]?
+    var user : User?;
     
     override init() {
         super.init();
@@ -31,12 +32,30 @@ class Status: NSObject{
     init(dic: [String : AnyObject]){
         super.init();
         
+        /*
         created_at = dic["created_at"] as! String?;
         id = dic["id"] as! Int;
         text = dic["text"] as! String?;
         source = dic["source"] as! String?;
         pic_urls = dic["pic_urls"] as! [[String : AnyObject]]?;
-        //setValuesForKeys(dic)
+ */
+        //kvc 方法 必须要  super.init();
+        setValuesForKeys(dic)
+    }
+    
+    
+    ///  setValuesForKeys内部会调用以下方法
+    ///
+    /// - Parameters:
+    ///   - value: <#value description#>
+    ///   - key: <#key description#>
+    override func setValue(_ value: Any?, forKey key: String) {
+        
+        if key == "user" {
+           user = User(dic: (value as! [String : AnyObject]));
+           return;
+        }
+        super.setValue(value, forKey: key);
     }
     
     /// 用 kvc 时，如果没有数据，会报错，从写方法
@@ -44,8 +63,8 @@ class Status: NSObject{
     /// - Parameters:
     ///   - value: <#value description#>
     ///   - key: <#key description#>
-    override func setValue(_ value: Any?, forKey key: String) {
-        
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+       
     }
     
     /// 打印 model 对象
@@ -87,15 +106,12 @@ class Status: NSObject{
     func dict2Model (list : [[String: AnyObject]]) -> [Status]{
         
         var array_model : Array<Status> = Array<Status>();
-        print(list[0]);
-        for dica : [String: AnyObject] in list {
+        for dict : [String: AnyObject] in list {
             
-            let status = Status();
-            status.text = dica["text"] as! String?;
-            //array_model.append(Status.init(dic: dic));
-            array_model.append(status);
+            array_model.append(Status.init(dic: dict));
         }
         
+        //print(array_model[0])
         return array_model;
     }
 }
