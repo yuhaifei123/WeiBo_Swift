@@ -6,7 +6,7 @@
 //  Copyright © 2016年 虞海飞. All rights reserved.
 //
 
-import UIKit
+import UIKit 
 
 let HomeReuseIdentifier = "HomeReuseIdentifier";
 
@@ -26,7 +26,6 @@ class Home_TableViewController: All_TableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         if isLogin == false {
 
@@ -41,7 +40,13 @@ class Home_TableViewController: All_TableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.radioClass(notification:)), name: notName, object: nil);
         
         // 注册一个cell
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: HomeReuseIdentifier)
+        tableView.register(Home_TableViewCell.self, forCellReuseIdentifier: HomeReuseIdentifier);
+        //默认 uiviewCell 的 高度是200
+        tableView.estimatedRowHeight = 200
+        //uiviewCell 高度可以动态
+        tableView.rowHeight = UITableViewAutomaticDimension;
+        //不要 uiviewcell 的分割线
+        tableView.separatorStyle  = UITableViewCellSeparatorStyle.none;
     }
     
     
@@ -148,26 +153,14 @@ extension Home_TableViewController{
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrray_Status?.count ?? 0
     }
-    
-    /**
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // 1.获取cell
-        let cell = tableView.dequeueReusableCellWithIdentifier(XMGHomeReuseIdentifier, forIndexPath: indexPath)
-        // 2.设置数据
-        let status = arrray_Status![indexPath.row]
-        cell.textLabel?.text = status.text
-        // 3.返回cell
-        return cell
-    }
- */
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
         // 1.获取cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: HomeReuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomeReuseIdentifier, for: indexPath) as! Home_TableViewCell
         // 2.设置数据
         let status = arrray_Status![indexPath.row]
-        cell.textLabel?.text = status.text
+        cell.status = status;
         // 3.返回cell
         return cell
     }
