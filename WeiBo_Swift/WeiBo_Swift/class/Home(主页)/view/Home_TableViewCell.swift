@@ -94,7 +94,7 @@ class Home_TableViewCell: UITableViewCell {
             make.height.equalTo(44);
             make.left.equalTo(0);
             make.right.equalTo(0);
-            make.bottom.equalTo(contentView);
+            make.bottom.equalTo(contentView).offset(10);
         }
     }
     
