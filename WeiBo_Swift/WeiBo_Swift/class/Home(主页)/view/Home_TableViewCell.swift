@@ -18,6 +18,12 @@ class Home_TableViewCell: UITableViewCell {
             timeLabel.text = "刚刚";
             sourceLabel.text = "来自: 小霸王学习机"
             contentLabel.text = status?.text;
+            //头像  iconView
+            if let iconurl = status?.user?.profile_image_url{
+           
+                let url = URL(string: iconurl);
+                iconView.sd_setImage(with: url as URL!);
+            }
         }
     }
     
@@ -94,7 +100,7 @@ class Home_TableViewCell: UITableViewCell {
             make.height.equalTo(44);
             make.left.equalTo(0);
             make.right.equalTo(0);
-            make.bottom.equalTo(contentView).offset(10);
+            make.bottom.equalTo(contentView).offset(0);
         }
     }
     
