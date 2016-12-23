@@ -4,4 +4,5 @@ target ‘WeiBo_SwiftTests’ do
   pod 'AFNetworking'
   pod 'SVProgressHUD'
   pod 'SDWebImage'
+  pod 'SnapKit'
 end
