@@ -49,7 +49,6 @@ class Home_TableViewController: All_TableViewController {
         tableView.separatorStyle  = UITableViewCellSeparatorStyle.none;
     }
     
-    
     /// 页面加载时，加载数据
     ///
     /// - Parameter animated: <#animated description#>
