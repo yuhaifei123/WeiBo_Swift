@@ -15,7 +15,7 @@ class Home_TableViewCell: UITableViewCell {
         didSet{
             
             nameLabel.text = status?.user?.name;
-            timeLabel.text = "刚刚";
+            timeLabel.text = status?.created_at;
             sourceLabel.text = "来自: 小霸王学习机"
             contentLabel.text = status?.text;
             //头像  iconView
@@ -24,6 +24,9 @@ class Home_TableViewCell: UITableViewCell {
                 let url = URL(string: iconurl);
                 iconView.sd_setImage(with: url as URL!);
             }
+            
+            // 设置认证图标
+            verifiedView.image = status?.user?.verifiedImage
         }
     }
     
@@ -91,12 +94,15 @@ class Home_TableViewCell: UITableViewCell {
         contentLabel.snp.makeConstraints { (make) in
             
             make.top.equalTo(iconView.snp.bottom).offset(10);
-            make.bottom.equalTo(footerView.snp.top);
+           // make.bottom.equalTo(footerView.snp.top);
             make.left.equalTo(iconView.snp.left);
+            make.bottom.equalTo(footerView.snp.top).offset(-5)
         }
+        
         
         footerView.snp.makeConstraints { (make) in
             
+           // make.top.equalTo(contentLabel.snp.bottom).offset(10);
             make.height.equalTo(44);
             make.left.equalTo(0);
             make.right.equalTo(0);
@@ -198,7 +204,7 @@ class  StatusFooterView : UIView {
             make.top.equalTo(0);
             make.left.equalTo(0);
             make.width.equalTo(self).multipliedBy(b);
-            make.height.equalTo(self);
+            make.height.equalTo(self).offset(2);
         }
     
         unlikeBtn.snp.makeConstraints { (make) in
