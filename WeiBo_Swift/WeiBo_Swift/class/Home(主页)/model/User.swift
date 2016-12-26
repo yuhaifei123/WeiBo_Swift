@@ -19,8 +19,10 @@ class User: NSObject {
     /// 时候是认证, true是, false不是
     var verified: Bool = false
     /// 用户的认证类型，-1：没有认证，0，认证用户，2,3,5: 企业认证，220: 达人
-    var verified_type: Int = -1
-
+    var verified_type: Int = -1;
+    
+    /// 用户的认证类型 图片
+    var verifiedImage : UIImage?;
     
     init(dic : [String : AnyObject]) {
         super.init();
@@ -30,12 +32,19 @@ class User: NSObject {
         profile_image_url = dic["profile_image_url"] as! String?
         verified = (dic["verified"] != nil)
         verified_type = dic["verified_type"] as! Int
- 
+        switch verified_type{
+            case 0:
+                verifiedImage = UIImage(named: "avatar_vip")
+            case 2, 3, 5:
+                verifiedImage = UIImage(named: "avatar_enterprise_vip")
+            case 220:
+                verifiedImage = UIImage(named: "avatar_grassroot")
+            default:
+                verifiedImage = nil
+        }
         
-       // setValuesForKeys(dic);
+        
     }
-    
-    
     
     ///  防止setValuesForKeys 有一些属性没有数据，报错，只要重写这个方法就可以
     /// - Parameters:

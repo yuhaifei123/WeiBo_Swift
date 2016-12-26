@@ -11,7 +11,14 @@ import UIKit
 class Status: NSObject{
 
     /// 微博创建时间
-    var created_at: String?
+    var created_at: String?{
+        didSet{
+            // 1.将字符串转换为时间
+            let createdDate = NSDate.dateWithStr(time: created_at!);
+            // 2.获取格式化之后的时间字符串
+            created_at = createdDate.descDate;
+        }
+    }
     /// 微博ID
     var id: Int = 0
     /// 微博信息内容
