@@ -26,7 +26,26 @@ class Status: NSObject{
     /// 微博来源
     var source: String?
     /// 配图数组
-    var pic_urls: [[String: AnyObject]]?
+    var pic_urls: [[String: AnyObject]]? {
+        
+        didSet{
+            // 1.初始化数组
+            storedPicURLS = [NSURL]()
+            // 2遍历取出所有的图片路径字符串
+            for dict in pic_urls!
+            {
+                if let urlStr = dict["thumbnail_pic"]
+                {
+                    // 将字符串转换为URL保存到数组中
+                    storedPicURLS?.append(NSURL(string: urlStr as! String)!)
+                }
+            }
+        }
+    }
+    
+    /// 保存当前微博所有配图的URL
+    var storedPicURLS: [NSURL]?
+    
     var user : User?;
     
     override init() {
@@ -86,7 +105,7 @@ class Status: NSObject{
     /// 请求网络数据
     ///
     /// - Parameter finished: models ： 数据 ， error ； 错误信息
-    func loadStatuses(finished: @escaping (_ models:[Status]?, _ error : Error?) ->()){
+   class func loadStatuses(finished: @escaping (_ models:[Status]?, _ error : Error?) ->()){
         
         let path = "2/statuses/home_timeline.json"
         let params = ["access_token": AccessToken_Model.loadAccessToken()?.access_token];
@@ -98,19 +117,53 @@ class Status: NSObject{
             let dic = JSON as! [String : AnyObject];
            
             let array : [[String:AnyObject]] = dic["statuses"] as! [[String : AnyObject]];
-            //self.dict2Model(list: array);
-            finished(self.dict2Model(list: array), nil);
+            let models =  self.dict2Model(list: array);
+            cacheStatusImages(list: models, finished: finished);
             return;
         }, failure: {
             (_, Error) -> Void in
             finished(nil,Error);
         });
     }
+    
+    ///  缓存图片 
+    ///
+    /// - Parameters:
+    ///   - list: <#list description#>
+    ///   - finished: <#finished description#>
+    class func cacheStatusImages(list: [Status], finished: @escaping (_ models:[Status]?, _ error:NSError?)->()) {
+    
+        //创建一个组（线程组）
+        let group = DispatchGroup();
 
+        for status in  list {
+            
+            if status.storedPicURLS == nil{
+                
+                continue;
+            }
+            
+            for url in status.storedPicURLS! {
+                
+                // 将当前的下载操作添加到组中
+                group.enter()
+                
+                // 缓存图片
+                SDWebImageManager.shared().downloadImage(with: url as URL!, options: SDWebImageOptions(rawValue: 0), progress: nil, completed: { (_, _, _, _, _) -> Void in
+                    
+                    // 离开当前组
+                    group.leave()
+                    finished(list, nil);
+                })
+
+            }
+        }
+    }
+    
     /// 解析网络返回数据
     ///
     /// - Parameter dic: <#dic description#>
-    func dict2Model (list : [[String: AnyObject]]) -> [Status]{
+   class func dict2Model (list : [[String: AnyObject]]) -> [Status]{
         
         var array_model : Array<Status> = Array<Status>();
         for dict : [String: AnyObject] in list {
