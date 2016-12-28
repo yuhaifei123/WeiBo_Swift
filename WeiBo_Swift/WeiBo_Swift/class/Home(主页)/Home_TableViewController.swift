@@ -75,22 +75,20 @@ class Home_TableViewController: All_TableViewController {
     /// 加载微博数据
     func loadData(){
         
-        let status = Status();
-        status.loadStatuses (finished: {
-            (any, error) in
+        Status.loadStatuses { (any, error) in
             
             if error != nil{
                 return;
             }
             self.arrray_Status = any;
-        });
+        }
     }
     
     ///登陆成功了，就是设置navitem的按钮
     private func navButton(){
 
        //设置控制器，左右
-       navigationItem.leftBarButtonItem =  UIBarButtonItem.ItemBut(imageNameN: "navigationbar_friendattention", target: self, action: #selector(self.leftBtnClick));
+        navigationItem.leftBarButtonItem =  UIBarButtonItem.ItemBut(imageNameN: "navigationbar_friendattention", target: self, action: #selector(self.leftBtnClick));
 
         navigationItem.rightBarButtonItem = UIBarButtonItem.ItemBut(imageNameN: "navigationbar_pop", target: self, action: #selector(self.rightButClick));
 
