@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      
      :returns: 默认界面
      */
-    private func defaultContoller() ->UIViewController{
+        private func defaultContoller() ->UIViewController{
         
         if AccessToken_Model.userLogin() {
             
@@ -69,8 +69,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func isNewupdate() -> Bool{
         
         //获得当前版本，info.plsit
-           let currentVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
-     
+        let currentVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+        
         //在沙箱里拿自己的存储的版本  ?? 如果没有数据就显示""
         let sandboxVersion = UserDefaults.standard.object(forKey: "CFBundleShortVersionString") as? String ?? "";
         
