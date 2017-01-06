@@ -6,12 +6,12 @@
 //  Copyright © 2016年 虞海飞. All rights reserved.
 //
 
-import UIKit 
-
-let HomeReuseIdentifier = "HomeReuseIdentifier";
+import UIKit
 
 class Home_TableViewController: All_TableViewController {
 
+    let HomeReuseIdentifier = "HomeReuseIdentifier";
+    
     /// tableView Cell 数据
     var arrray_Status : [Status]? {
         // 当 arrray_Status 有值后，就调用此方法
@@ -30,23 +30,21 @@ class Home_TableViewController: All_TableViewController {
         if isLogin == false {
 
             visitorView?.setupVisitorView(ishome: true, imageName: "visitordiscover_feed_image_house", message: "关注一些人，回这里看看有什么惊喜");
+            return;
         }
-        else{
+        
             navButton();
-        }
         
         /// 接受广播
         let notName = NSNotification.Name(rawValue:"notifyChatMsgRecv");
         NotificationCenter.default.addObserver(self, selector: #selector(self.radioClass(notification:)), name: notName, object: nil);
         
         // 注册一个cell
+    
         tableView.register(Home_TableViewCell.self, forCellReuseIdentifier: HomeReuseIdentifier);
-        //默认 uiviewCell 的 高度是200
-        tableView.estimatedRowHeight = 200
-        //uiviewCell 高度可以动态
-        tableView.rowHeight = UITableViewAutomaticDimension;
         //不要 uiviewcell 的分割线
         tableView.separatorStyle  = UITableViewCellSeparatorStyle.none;
+
     }
     
     /// 页面加载时，加载数据
@@ -54,6 +52,15 @@ class Home_TableViewController: All_TableViewController {
     /// - Parameter animated: <#animated description#>
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
+    
+        if tableView == nil{
+            print("adsfdsf");
+        }
+              //默认 uiviewCell 的 高度是200
+        //tableView.estimatedRowHeight = 200
+        //uiviewCell 高度可以动态
+        //tableView.rowHeight = UITableViewAutomaticDimension;
+     
         
         // 4.加载微博数据
         loadData()
@@ -92,7 +99,6 @@ class Home_TableViewController: All_TableViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem.ItemBut(imageNameN: "navigationbar_pop", target: self, action: #selector(self.rightButClick));
 
-        
         titleButton.setTitle("微博 daemo ", for: UIControlState.normal);
                titleButton.addTarget(self, action: #selector(self.titeButton(btn:)), for: UIControlEvents.touchUpInside);
 
@@ -141,6 +147,14 @@ class Home_TableViewController: All_TableViewController {
         let pop = Poptroller_Object();
         return pop;
     }();
+    
+    /// 微博行高的缓存, 利用字典作为容器. key就是微博的id, 值就是对应微博的行高
+    var rowCache: [Int: CGFloat] = [Int: CGFloat]()
+    
+    override func didReceiveMemoryWarning() {
+        // 清空缓存
+        rowCache.removeAll()
+    }
 }
 
 
@@ -156,10 +170,38 @@ extension Home_TableViewController{
         // 1.获取cell
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeReuseIdentifier, for: indexPath) as! Home_TableViewCell
         // 2.设置数据
-        let status = arrray_Status![indexPath.row]
+        let status = arrray_Status![indexPath.row];
+        print(status.storedPicURLS);
         cell.status = status;
         // 3.返回cell
         return cell
     }
+    
+      override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // 1.取出对应行的模型
+        let status = arrray_Status![indexPath.row]
+        
+        // 2.判断缓存中有没有
+        if let height = rowCache[status.id]
+        {
+            print("从缓存中获取")
+            return height
+        }
+        
+        // 3.拿到cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomeReuseIdentifier) as! Home_TableViewCell
+        // 注意点:不要使用以下方法获取, 在某些版本或者模拟器会有bug
+        //        tableView.dequeueReusableCellWithIdentifier(<#T##identifier: String##String#>, forIndexPath: <#T##NSIndexPath#>)
+        
+        // 4.拿到对应行的行高
+        let rowHeight = cell.rowHeight(status: status)
+        
+        // 5.缓存行高
+        rowCache[status.id] = rowHeight
+        
+        // 6.返回行高
+        return rowHeight
+    }
+
 }
 
