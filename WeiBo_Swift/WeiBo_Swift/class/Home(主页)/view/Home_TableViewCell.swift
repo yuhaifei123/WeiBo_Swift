@@ -173,30 +173,25 @@ class Home_TableViewCell: UITableViewCell {
         let margin = 10
         //那到所有的图片的总数
         let count = status?.storedPicURLS?.count;
-        print(count);
         if count == nil || count == 0{
             
             size = CGSize(width: 0, height: 0);
         }
         else if (count == 1){
             //等于1
-            print(status?.storedPicURLS?[0]);
             //拿到路劲 key
             let key = status?.storedPicURLS?[0].absoluteString;
             //SDWebImageManager.shared().imageCache.imageFromMemoryCache(forKey: <#T##String!#>)
             //拿到 image
-            let image = SDWebImageManager.shared().imageCache.imageFromDiskCache(forKey: key);
+            let image = SDWebImageManager.shared().imageCache.imageFromMemoryCache(forKey: key);
                 
-                  size = image?.size;
-                print(size);
-            
+                  size = image!.size;
         }
         else if (count == 4){
             let viewWidth = width * 2 + margin * 2;
             let viewHeight = width * 2 + margin;
             
             size = CGSize(width: viewWidth, height: viewHeight);
-            print(size);
         }
         else{
             
@@ -211,7 +206,6 @@ class Home_TableViewCell: UITableViewCell {
             let viewHeight = rowNumber * width + (rowNumber - 1) * margin
             
             size = CGSize(width: viewWidth, height: viewHeight);
-             print(size);
         }
         
         return size!;
@@ -432,6 +426,7 @@ class PictureViewCell : UICollectionViewCell{
     var imageURL : NSURL? {
         
         didSet{
+          
            iconImageView.sd_setImage(with: imageURL as! URL)
            // iconImageView(imageURL
         }
