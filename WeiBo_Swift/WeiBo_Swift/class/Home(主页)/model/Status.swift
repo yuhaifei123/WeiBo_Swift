@@ -32,10 +32,8 @@ class Status: NSObject{
             // 1.初始化数组
             storedPicURLS = [NSURL]()
             // 2遍历取出所有的图片路径字符串
-            for dict in pic_urls!
-            {
-                if let urlStr = dict["thumbnail_pic"]
-                {
+            for dict in pic_urls!{
+                if let urlStr = dict["thumbnail_pic"]{
                     // 将字符串转换为URL保存到数组中
                     storedPicURLS?.append(NSURL(string: urlStr as! String)!)
                 }
@@ -58,13 +56,6 @@ class Status: NSObject{
     init(dic: [String : AnyObject]){
         super.init();
         
-        /*
-        created_at = dic["created_at"] as! String?;
-        id = dic["id"] as! Int;
-        text = dic["text"] as! String?;
-        source = dic["source"] as! String?;
-        pic_urls = dic["pic_urls"] as! [[String : AnyObject]]?;
- */
         //kvc 方法 必须要  super.init();
         setValuesForKeys(dic)
     }
