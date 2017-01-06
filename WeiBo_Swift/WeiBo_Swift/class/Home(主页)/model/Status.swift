@@ -141,13 +141,21 @@ class Status: NSObject{
                 
                 // 缓存图片
                 SDWebImageManager.shared().downloadImage(with: url as URL!, options: SDWebImageOptions(rawValue: 0), progress: nil, completed: { (_, _, _, _, _) -> Void in
-                    
-                    // 离开当前组
-                    group.leave()
-                    finished(list, nil);
-                })
-
+                // 离开当前组
+                group.leave();
+                });
             }
+            
+        }
+       
+        // 2.当所有图片都下载完毕再通过闭包通知调用者
+       // dispatch_group_notify(group, dispatch_get_main_queue()) { () -> Void in
+            // 能够来到这个地方, 一定是所有图片都下载完毕
+         //  finished(list, nil);
+        //}
+        //finished(list, nil);
+       group.notify(queue: DispatchQueue.main) { 
+         finished(list, nil);
         }
     }
     
