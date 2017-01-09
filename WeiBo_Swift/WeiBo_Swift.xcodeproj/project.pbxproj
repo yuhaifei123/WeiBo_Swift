@@ -83,6 +83,9 @@
 		4DB86D341D61876B00D6A974 /* WeiBo_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB86D331D61876B00D6A974 /* WeiBo_SwiftTests.swift */; };
 		4DB86D3F1D61876B00D6A974 /* WeiBo_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB86D3E1D61876B00D6A974 /* WeiBo_SwiftUITests.swift */; };
 		4DBA6F4D1E0D0D2500D86ED6 /* NSDate+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBA6F4C1E0D0D2500D86ED6 /* NSDate+Tools.swift */; };
+		4DBC45A31E2354D600BFAE0B /* StatusFooterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBC45A21E2354D600BFAE0B /* StatusFooterButtonView.swift */; };
+		4DBC45A51E2358BF00BFAE0B /* StatusFooterTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBC45A41E2358BF00BFAE0B /* StatusFooterTopView.swift */; };
+		4DBC45A71E2364C400BFAE0B /* StatusPictureCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBC45A61E2364C400BFAE0B /* StatusPictureCollectionView.swift */; };
 		4DBFE69F1E03B50A00C555C1 /* AFNetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFE69E1E03B50A00C555C1 /* AFNetworkTools.swift */; };
 		4DBFE6E41E03D27200C555C1 /* AccessToken_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFE6E31E03D27200C555C1 /* AccessToken_Model.swift */; };
 		4DC51E3F1D7153220075E5C9 /* Add_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC51E3E1D7153220075E5C9 /* Add_TableViewController.swift */; };
@@ -240,6 +243,9 @@
 		4DB86D3E1D61876B00D6A974 /* WeiBo_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiBo_SwiftUITests.swift; sourceTree = "<group>"; };
 		4DB86D401D61876B00D6A974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DBA6F4C1E0D0D2500D86ED6 /* NSDate+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Tools.swift"; sourceTree = "<group>"; };
+		4DBC45A21E2354D600BFAE0B /* StatusFooterButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusFooterButtonView.swift; sourceTree = "<group>"; };
+		4DBC45A41E2358BF00BFAE0B /* StatusFooterTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusFooterTopView.swift; sourceTree = "<group>"; };
+		4DBC45A61E2364C400BFAE0B /* StatusPictureCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusPictureCollectionView.swift; sourceTree = "<group>"; };
 		4DBFE69E1E03B50A00C555C1 /* AFNetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFNetworkTools.swift; sourceTree = "<group>"; };
 		4DBFE6E01E03B80800C555C1 /* WeiBo_Swift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeiBo_Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		4DBFE6E31E03D27200C555C1 /* AccessToken_Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken_Model.swift; sourceTree = "<group>"; };
@@ -330,6 +336,9 @@
 			isa = PBXGroup;
 			children = (
 				4D201BEC1E0BA50200A07FAF /* Home_TableViewCell.swift */,
+				4DBC45A21E2354D600BFAE0B /* StatusFooterButtonView.swift */,
+				4DBC45A41E2358BF00BFAE0B /* StatusFooterTopView.swift */,
+				4DBC45A61E2364C400BFAE0B /* StatusPictureCollectionView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -930,6 +939,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D07B1BD1E0239EF0086ECEE /* OAuth_ViewController.swift in Sources */,
+				4DBC45A31E2354D600BFAE0B /* StatusFooterButtonView.swift in Sources */,
 				4DBFE69F1E03B50A00C555C1 /* AFNetworkTools.swift in Sources */,
 				4D70A0251E0BB0E8004CDD9E /* ConstraintLayoutGuideDSL.swift in Sources */,
 				4D30AEE71E07AF8B00C4503A /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -955,6 +965,7 @@
 				4D70A02D1E0BB0E8004CDD9E /* ConstraintMakerRelatable.swift in Sources */,
 				4DFC951C1E0A492F008D17C1 /* WelcomeViewController.swift in Sources */,
 				4D30AEE51E07AF8B00C4503A /* AFImageDownloader.m in Sources */,
+				4DBC45A71E2364C400BFAE0B /* StatusPictureCollectionView.swift in Sources */,
 				4DFE7FB31DA4FE980022E8CC /* UIBarButtonItem_Fen.swift in Sources */,
 				4DFC95401E0A496B008D17C1 /* NSData+ImageContentType.m in Sources */,
 				4D70A0391E0BB0E8004CDD9E /* UILayoutSupport+Extensions.swift in Sources */,
@@ -962,6 +973,7 @@
 				4D30AEE11E07AF8B00C4503A /* AFURLSessionManager.m in Sources */,
 				4D70A0281E0BB0E8004CDD9E /* ConstraintMaker.swift in Sources */,
 				4DB86D1F1D61876B00D6A974 /* AppDelegate.swift in Sources */,
+				4DBC45A51E2358BF00BFAE0B /* StatusFooterTopView.swift in Sources */,
 				4D70A01A1E0BB0E8004CDD9E /* README.md in Sources */,
 				4DDA57321E091B90005F4359 /* UIView+AutoLayout.swift in Sources */,
 				4DFC954A1E0A496B008D17C1 /* UIImage+MultiFormat.m in Sources */,
