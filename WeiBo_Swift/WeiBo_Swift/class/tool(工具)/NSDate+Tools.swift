@@ -70,14 +70,6 @@ extension NSDate{
             // 3.处理一年以内
             formatterStr = "MM-dd " + formatterStr
             
-            /*
-            // 4.处理更早时间
-            let comps = calendar.components(NSCalendar.Unit.Year, fromDate: self, toDate: NSDate(), options: NSCalendar.Options(rawValue: 0))
-            if comps.year >= 1
-            {
-                formatterStr = "yyyy-" + formatterStr
-            }
- */
         }
         
         // 5.按照指定的格式将时间转换为字符串
