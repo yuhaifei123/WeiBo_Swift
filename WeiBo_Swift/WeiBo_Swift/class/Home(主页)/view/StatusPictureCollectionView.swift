@@ -131,7 +131,7 @@ extension StatusPictureCollectionView : UICollectionViewDataSource{
 }
 
 /// 设置九宫格的 cell
-class PictureViewCell : UICollectionViewCell{
+private class PictureViewCell : UICollectionViewCell{
     
     var imageURL : NSURL? {
         
