@@ -16,12 +16,10 @@ class Home_TableViewCell: UITableViewCell {
     
         didSet{
             
-            nameLabel.text = status?.user?.name;
-            timeLabel.text = status?.created_at;
-            sourceLabel.text = "来自: 小霸王学习机"
+            //设置 topview 数据
+            topView.status = status;
             contentLabel.text = status?.text;
         
-            let size = self.calculateImageSize()
             pictureView.snp.updateConstraints { (make) in
                 make.size.equalTo(self.calculateImageSize());
               //  make.bottom.equalTo(self.footerView.snp.top).offset(10);
@@ -32,16 +30,6 @@ class Home_TableViewCell: UITableViewCell {
             }
             // 1.3设置cell的大小
             pictureLayout.itemSize = CGSize(width: 90, height: 90);
-            
-            //头像  iconView
-            if let iconurl = status?.user?.profile_image_url{
-           
-                let url = URL(string: iconurl);
-                iconView.sd_setImage(with: url as URL!);
-            }
-            
-            // 设置认证图标
-            verifiedView.image = status?.user?.verifiedImage
         }
     }
     
@@ -73,58 +61,26 @@ class Home_TableViewCell: UITableViewCell {
     private func setupUI(){
         
         //控制器 view，添加 view
-        contentView.addSubview(iconView);
-        contentView.addSubview(verifiedView);
-        contentView.addSubview(nameLabel);
-        contentView.addSubview(vipView);
-        contentView.addSubview(timeLabel);
-        contentView.addSubview(sourceLabel);
+        contentView.addSubview(topView);
         contentView.addSubview(contentLabel);
         contentView.addSubview(footerView);
         contentView.addSubview(pictureView);
         //view 布局
-        //头像
-        iconView.snp.makeConstraints { (make) in
+        
+        topView.snp.makeConstraints { (make) in
             
-            make.size.equalTo(CGSize(width: 50, height: 50))
-            make.top.left.equalTo(10);
+            make.left.equalTo(10);
+            make.right.equalTo(-10);
+            make.top.equalTo(10);
+            make.height.equalTo(60);
         }
-        //图标
-        verifiedView.snp.makeConstraints { (make) in
-            
-            make.size.equalTo(CGSize(width: 14, height: 14));
-            make.bottom.equalTo(iconView.snp.bottom).offset(5);
-            make.right.equalTo(iconView.snp.right).offset(5);
-        }
-       // 昵称
-        nameLabel.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(iconView.snp.top);
-            make.left.equalTo(iconView.snp.right).offset(10);
-        }
-        // vip图标
-        vipView.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 14, height: 14));
-            make.top.equalTo(nameLabel.snp.top);
-            make.left.equalTo(nameLabel.snp.right).offset(10);
-        }
-        //时间
-        timeLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(nameLabel.snp.bottom).offset(10);
-            make.left.equalTo(iconView.snp.right).offset(10);
-        }
-        //来源
-        sourceLabel.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(timeLabel.snp.top);
-            make.left.equalTo(timeLabel.snp.right).offset(10);
-        }
+        
         //正文
         contentLabel.snp.makeConstraints { (make) in
             
-            make.top.equalTo(iconView.snp.bottom).offset(10);
+            make.top.equalTo(topView.snp.bottom).offset(10);
            // make.bottom.equalTo(footerView.snp.top);
-            make.left.equalTo(iconView.snp.left);
+            make.left.equalTo(topView.snp.left);
             make.bottom.equalTo(pictureView.snp.top).offset(-5)
         }
         
@@ -211,65 +167,12 @@ class Home_TableViewCell: UITableViewCell {
         return size!;
     }
     
-    /*
-     协作一心办实事，
-     通达暖心为员工，
-     智慧管理真才能，
-     联手集体创佳绩！
-    */
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /// 头像
-    private lazy var iconView : UIImageView = {
-    
-        let imageViw = UIImageView(image: UIImage(named: "avatar_default_big"));
-        return imageViw;
-    }();
-    
-    /// 图标
-    private lazy var verifiedView : UIImageView = {
-    
-        let imageView = UIImageView(image: UIImage(named: "avatar_enterprise_vip"));
-        return imageView;
-    }();
-    
-    /// 昵称
-    private lazy var nameLabel : UILabel = {
-    
-        let label = UILabel();
-        label.textColor = UIColor.darkGray;
-        //字体的大小
-        label.font = UIFont.systemFont(ofSize: 14);
-        return label;
-    }();
-    
-     /// 会员图标
-    private lazy var vipView : UIImageView = {
-        
-        let imageView = UIImageView(image: UIImage(named: "common_icon_membership"));
-        return imageView;
-    }();
-    
-    ///时间
-    private lazy var timeLabel : UILabel = {
-    
-        let label = UILabel();
-        label.textColor = UIColor.darkGray;
-        //字体的大小
-        label.font = UIFont.systemFont(ofSize: 14);
-        return label;
-    }();
-    ///来源
-    private lazy var sourceLabel : UILabel = {
-    
-        let label = UILabel();
-        label.textColor = UIColor.darkGray;
-        //字体的大小
-        label.font = UIFont.systemFont(ofSize: 14);
-        return label;
-    }();
+    //头部
+    private lazy var topView : StatusFooterTopView = StatusFooterTopView();
     
     ///正文 contentLabel
     private lazy var contentLabel : UILabel = {
@@ -286,9 +189,9 @@ class Home_TableViewCell: UITableViewCell {
     }();
     
     /// 底部工具条
-    private lazy var footerView: StatusFooterView = {
+    private lazy var footerView: StatusFooterButtonView = {
         
-        let view = StatusFooterView();
+        let view = StatusFooterButtonView();
         view.backgroundColor = UIColor(white: 0.2, alpha: 0.5);
         return view;
     }();
@@ -302,96 +205,6 @@ class Home_TableViewCell: UITableViewCell {
         return view;
     }();
 }
-
-/// 工具 view
-class  StatusFooterView : UIView {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame);
-        
-        addView();
-    }
-    
-    private func addView(){
-        
-        addSubview(retweetBtn);
-        addSubview(unlikeBtn);
-        addSubview(commonBtn);
-        
-        let b : Double  = 1/3;
-        retweetBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(0);
-            make.left.equalTo(0);
-            make.width.equalTo(self).multipliedBy(b);
-            make.height.equalTo(self).offset(2);
-        }
-    
-        unlikeBtn.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(retweetBtn.snp.top);
-            make.left.equalTo(retweetBtn.snp.right);
-            make.height.equalTo(retweetBtn.snp.height);
-            make.width.equalTo(retweetBtn.snp.width);
-        }
-        
-        
-        commonBtn.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(unlikeBtn.snp.top);
-            make.left.equalTo(unlikeBtn.snp.right);
-            make.height.equalTo(unlikeBtn.snp.height);
-            make.width.equalTo(unlikeBtn.snp.width);
-        }
- 
-    }
-    
-    /// 转发
-    private lazy var retweetBtn : UIButton = {
-        
-        let button = UIButton();
-        button.setImage(UIImage(named: "timeline_icon_retweet"), for: UIControlState.normal);
-        button.setTitle("转发", for: UIControlState.normal);
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 10);
-        button.setBackgroundImage(UIImage(named:"timeline_card_bottom_background"), for: UIControlState.normal);
-        //字体之间的间距
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0);
-        
-        return button;
-    }();
-    
-     // 赞
-    private lazy var unlikeBtn : UIButton = {
-        
-        let button = UIButton();
-        button.setImage(UIImage(named: "timeline_icon_unlike"), for: UIControlState.normal);
-        button.setTitle("赞", for: UIControlState.normal);
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 10);
-        button.setBackgroundImage(UIImage(named:"timeline_card_bottom_background"), for: UIControlState.normal);
-        //字体之间的间距
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0);
-        
-        return button;
-    }();
-    
-    // 评论
-    private lazy var commonBtn: UIButton = {
-        
-        let button = UIButton();
-        button.setImage(UIImage(named: "timeline_icon_comment"), for: UIControlState.normal);
-        button.setTitle("评论", for: UIControlState.normal);
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 10);
-        button.setBackgroundImage(UIImage(named:"timeline_card_bottom_background"), for: UIControlState.normal);
-        //字体之间的间距
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0);
-        
-        return button;
-    }()
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
 
 // MARK: - 九宫格图片
 extension Home_TableViewCell : UICollectionViewDataSource{
