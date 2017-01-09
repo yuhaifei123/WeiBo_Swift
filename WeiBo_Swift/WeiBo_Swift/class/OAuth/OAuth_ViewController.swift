@@ -145,14 +145,9 @@ extension OAuth_ViewController :UIWebViewDelegate{
                 }
                 
                 SVProgressHUD.showInfo(withStatus: "网络不给力");
-                
-                print("------- 拿数据 ------");
                 let acc = AccessToken_Model.loadAccessToken();
-                print(acc);
             });
-            
-            
-            
+
         }, failure: {
             (URLSessionDataTask, Error) -> Void in
             
