@@ -4,7 +4,7 @@
 //
 //  Created by 虞海飞 on 2017/1/9.
 //  Copyright © 2017年 虞海飞. All rights reserved.
-//
+//  九宫格，view
 
 import UIKit
 
@@ -27,7 +27,7 @@ class StatusPictureCollectionView: UICollectionView {
     /**
      计算配图的尺寸
      */
-    private func calculateImageSize() -> CGSize{
+    public func calculateImageSize() -> CGSize{
         
         //宽高
         var size : CGSize?;
@@ -36,10 +36,12 @@ class StatusPictureCollectionView: UICollectionView {
         let margin = 10
         //那到所有的图片的总数
         let count = status?.storedPicURLS?.count;
+        print("status?.storedPicURLS?.count------------\(status?.storedPicURLS?.count)")
         if count == nil || count == 0{
             
             
             size = CGSize(width: 0, height: 0);
+            pictureLayout.itemSize = size!;
         }
         else if (count == 1){
             //等于1
@@ -50,12 +52,14 @@ class StatusPictureCollectionView: UICollectionView {
             let image = SDWebImageManager.shared().imageCache.imageFromMemoryCache(forKey: key);
             
             size = image!.size;
+            pictureLayout.itemSize = size!;
         }
         else if (count == 4){
             let viewWidth = width * 2 + margin * 2;
             let viewHeight = width * 2 + margin;
             
             size = CGSize(width: viewWidth, height: viewHeight);
+            pictureLayout.itemSize = CGSize(width: 90, height: 90);
         }
         else{
             
@@ -70,9 +74,10 @@ class StatusPictureCollectionView: UICollectionView {
             let viewHeight = rowNumber * width + (rowNumber - 1) * margin
             
             size = CGSize(width: viewWidth, height: viewHeight);
+            pictureLayout.itemSize = CGSize(width: 90, height: 90);
         }
         
-        pictureLayout.itemSize = size!;
+       
         return size!;
     }
 
