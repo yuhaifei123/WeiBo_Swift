@@ -156,7 +156,8 @@ class Status: NSObject{
         //finished(list, nil);
        group.notify(queue: DispatchQueue.main) { 
          finished(list, nil);
-        }
+        
+       }
     }
     
     /// 解析网络返回数据
