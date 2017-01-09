@@ -81,8 +81,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true;
         }
         
-        print("当前--\(currentVersion)------沙箱--\(sandboxVersion)");
-        
         return false;
     }
 
