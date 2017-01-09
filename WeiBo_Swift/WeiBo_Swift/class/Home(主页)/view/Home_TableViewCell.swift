@@ -88,8 +88,8 @@ class Home_TableViewCell: UITableViewCell {
         self.status = status
         
         // 2.强制更新界面
-        self.layoutIfNeeded()
-    
+        self.layoutIfNeeded();
+        
         // 3.返回底部视图最大的Y值
         return footerView.frame.maxY
     }

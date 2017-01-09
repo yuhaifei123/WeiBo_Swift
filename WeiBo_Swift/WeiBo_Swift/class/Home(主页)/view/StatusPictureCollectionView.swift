@@ -36,11 +36,10 @@ class StatusPictureCollectionView: UICollectionView {
         let margin = 10
         //那到所有的图片的总数
         let count = status?.storedPicURLS?.count;
-        print("status?.storedPicURLS?.count------------\(status?.storedPicURLS?.count)")
+    
         if count == nil || count == 0{
             
-            
-            size = CGSize(width: 0, height: 0);
+            size = CGSize(width: 0.00001, height: 0.00001);
             pictureLayout.itemSize = size!;
         }
         else if (count == 1){
