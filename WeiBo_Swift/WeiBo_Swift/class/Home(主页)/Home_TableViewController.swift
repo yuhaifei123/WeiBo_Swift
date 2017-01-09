@@ -171,7 +171,6 @@ extension Home_TableViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeReuseIdentifier, for: indexPath) as! Home_TableViewCell
         // 2.设置数据
         let status = arrray_Status![indexPath.row];
-        print(status.storedPicURLS);
         cell.status = status;
         // 3.返回cell
         return cell
