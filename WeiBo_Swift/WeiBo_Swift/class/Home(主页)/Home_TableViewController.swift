@@ -40,8 +40,7 @@ class Home_TableViewController: All_TableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.radioClass(notification:)), name: notName, object: nil);
         
         // 注册一个cell
-    
-        tableView.register(Home_TableViewCell.self, forCellReuseIdentifier: HomeReuseIdentifier);
+        tableView.register(StatusForwardTableViewCell.self, forCellReuseIdentifier: HomeReuseIdentifier);
         //不要 uiviewcell 的分割线
         tableView.separatorStyle  = UITableViewCellSeparatorStyle.none;
 
@@ -168,7 +167,7 @@ extension Home_TableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
         // 1.获取cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: HomeReuseIdentifier, for: indexPath) as! Home_TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomeReuseIdentifier, for: indexPath) as! StatusForwardTableViewCell
         // 2.设置数据
         let status = arrray_Status![indexPath.row];
         cell.status = status;
