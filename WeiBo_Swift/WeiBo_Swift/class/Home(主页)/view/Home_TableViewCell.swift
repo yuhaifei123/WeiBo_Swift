@@ -35,7 +35,7 @@ class Home_TableViewCell: UITableViewCell {
     }
     
     /// 添加 view
-    private func setupUI(){
+    public func setupUI(){
         
         //控制器 view，添加 view
         contentView.addSubview(topView);
@@ -56,15 +56,13 @@ class Home_TableViewCell: UITableViewCell {
         contentLabel.snp.makeConstraints { (make) in
             
             make.top.equalTo(topView.snp.bottom).offset(10);
-           // make.bottom.equalTo(footerView.snp.top);
             make.left.equalTo(topView.snp.left);
-            make.bottom.equalTo(pictureView.snp.top).offset(-5)
+            make.bottom.equalTo(pictureView.snp.top).offset(-5);
         }
         
         //配图
         pictureView.snp.makeConstraints { (make) in
             
-            //make.top.equalTo(contentLabel.snp.bottom).offset(10);
             make.left.equalTo(10);
             make.size.equalTo(CGSize(width: 0.00001, height: 0.00001));
         }
@@ -100,10 +98,10 @@ class Home_TableViewCell: UITableViewCell {
     }
     
     //头部
-    private lazy var topView : StatusFooterTopView = StatusFooterTopView();
+    public lazy var topView : StatusFooterTopView = StatusFooterTopView();
     
     ///正文 contentLabel
-    private lazy var contentLabel : UILabel = {
+    public lazy var contentLabel : UILabel = {
     
         let label = UILabel();
         label.textColor = UIColor.darkGray;
@@ -117,7 +115,7 @@ class Home_TableViewCell: UITableViewCell {
     }();
     
     /// 底部工具条
-    private lazy var footerView: StatusFooterButtonView = {
+    public lazy var footerView: StatusFooterButtonView = {
         
         let view = StatusFooterButtonView();
         view.backgroundColor = UIColor(white: 0.2, alpha: 0.5);
@@ -125,7 +123,7 @@ class Home_TableViewCell: UITableViewCell {
     }();
 
     /// 配图  九宫格
-    private lazy var pictureView : StatusPictureCollectionView = {
+    public lazy var pictureView : StatusPictureCollectionView = {
         
         let view =  StatusPictureCollectionView();
         return view;
