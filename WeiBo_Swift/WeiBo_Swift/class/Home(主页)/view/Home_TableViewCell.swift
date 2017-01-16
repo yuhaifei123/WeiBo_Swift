@@ -10,6 +10,7 @@ import UIKit
 
 class Home_TableViewCell: UITableViewCell {
 
+    //根据，图片（九宫格图片）大小
     var size : CGSize = CGSize(width: 0.001, height: 0.001);
     
     var status : Status? {
@@ -24,7 +25,14 @@ class Home_TableViewCell: UITableViewCell {
             pictureView.snp.updateConstraints { (make) in
                 make.size.equalTo(size);
             }
+            
+            updateUI();
         }
+    }
+    
+    func updateUI(){
+        
+        
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -64,7 +72,7 @@ class Home_TableViewCell: UITableViewCell {
         pictureView.snp.makeConstraints { (make) in
             
             make.left.equalTo(10);
-            make.size.equalTo(CGSize(width: 0.00001, height: 0.00001));
+            make.size.equalTo(CGSize(width: 0.01, height: 0.01));
         }
         
         footerView.snp.makeConstraints { (make) in
