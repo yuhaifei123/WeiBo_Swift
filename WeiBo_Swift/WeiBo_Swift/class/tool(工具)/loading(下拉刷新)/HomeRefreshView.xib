@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HomeRefreshView" customModule="WeiBo_Swift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="70"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tableview_loading" translatesAutoresizingMaskIntoConstraints="NO" id="4sg-VO-vZM">
+                    <rect key="frame" x="10" y="19" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="fSn-gt-BXj"/>
+                        <constraint firstAttribute="height" constant="32" id="rI1-d6-a9e"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加载中..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSf-Gz-Bew">
+                    <rect key="frame" x="52" y="25" width="138" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="UD7-GQ-wiv"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lE0-QY-4B4">
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="70"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tableview_pull_refresh" translatesAutoresizingMaskIntoConstraints="NO" id="9b8-We-MQ8">
+                            <rect key="frame" x="10" y="19" width="32" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="4sF-Uo-rsu"/>
+                                <constraint firstAttribute="width" constant="32" id="RBU-PX-JI8"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="下拉刷新..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVv-do-aTF">
+                            <rect key="frame" x="50" y="25" width="138" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="j59-MD-2i8"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="9b8-We-MQ8" firstAttribute="leading" secondItem="lE0-QY-4B4" secondAttribute="leading" constant="10" id="5oZ-YR-5av"/>
+                        <constraint firstItem="9b8-We-MQ8" firstAttribute="centerY" secondItem="lE0-QY-4B4" secondAttribute="centerY" id="JIw-oJ-BQ2"/>
+                        <constraint firstItem="9b8-We-MQ8" firstAttribute="centerY" secondItem="lE0-QY-4B4" secondAttribute="centerY" id="K7S-SE-kUt"/>
+                        <constraint firstItem="hVv-do-aTF" firstAttribute="leading" secondItem="9b8-We-MQ8" secondAttribute="trailing" constant="10" id="LD1-42-SSI"/>
+                        <constraint firstItem="hVv-do-aTF" firstAttribute="centerY" secondItem="lE0-QY-4B4" secondAttribute="centerY" id="gaO-S2-N1u"/>
+                        <constraint firstAttribute="trailing" secondItem="hVv-do-aTF" secondAttribute="trailing" constant="10" id="xS6-wu-C7j"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="lE0-QY-4B4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5Mh-xZ-jTZ"/>
+                <constraint firstItem="4sg-VO-vZM" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="7Hn-AS-ZQN"/>
+                <constraint firstItem="4sg-VO-vZM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="C1k-WQ-OOX"/>
+                <constraint firstItem="lE0-QY-4B4" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="FqH-f1-c0y"/>
+                <constraint firstItem="PSf-Gz-Bew" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="HKy-Bs-4xx"/>
+                <constraint firstItem="lE0-QY-4B4" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="QDp-Ly-80T"/>
+                <constraint firstItem="lE0-QY-4B4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cse-zO-cKj"/>
+                <constraint firstItem="PSf-Gz-Bew" firstAttribute="leading" secondItem="4sg-VO-vZM" secondAttribute="trailing" constant="10" id="juR-Kn-Yfj"/>
+                <constraint firstAttribute="trailing" secondItem="PSf-Gz-Bew" secondAttribute="trailing" constant="10" id="qUy-Y8-neA"/>
+                <constraint firstItem="4sg-VO-vZM" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="stM-Zb-5bU"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="224" y="-171"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tableview_loading" width="32" height="32"/>
+        <image name="tableview_pull_refresh" width="32" height="32"/>
+    </resources>
+</document>
