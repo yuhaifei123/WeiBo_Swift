@@ -76,6 +76,11 @@
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imageView_ArrowItem" destination="9b8-We-MQ8" id="AtT-Ql-806"/>
+                <outlet property="imageView_Loading" destination="4sg-VO-vZM" id="84s-EL-6gV"/>
+                <outlet property="view_LoadView" destination="lE0-QY-4B4" id="EgD-ft-hPH"/>
+            </connections>
             <point key="canvasLocation" x="224" y="-171"/>
         </view>
     </objects>
