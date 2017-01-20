@@ -4,7 +4,7 @@
 //
 //  Created by 虞海飞 on 2017/1/9.
 //  Copyright © 2017年 虞海飞. All rights reserved.
-//
+//  转发 view
 
 import UIKit
 
@@ -46,8 +46,7 @@ class StatusForwardTableViewCell: Home_TableViewCell {
             make.top.equalTo(contentLabel.snp.bottom);
             make.left.equalTo(10);
             make.right.equalTo(-10);
-          //  make.bottom.equalTo(pictureView.snp.bottom);
-            make.height.equalTo(0);
+            make.height.equalTo(0.0);
         };
     }
     
@@ -64,7 +63,7 @@ class StatusForwardTableViewCell: Home_TableViewCell {
         }
         
         forwardButton.snp.updateConstraints { (make) in
-            make.height.equalTo(1.0);
+            make.height.equalTo(0.0);
         }
     }
     
