@@ -26,6 +26,8 @@ class Home_TableViewController: All_TableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        showLoadingLable.isHidden = false;
         
         if isLogin == false {
 
@@ -40,10 +42,12 @@ class Home_TableViewController: All_TableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.radioClass(notification:)), name: notName, object: nil);
         
         // 注册一个cell
-        tableView.register(StatusForwardTableViewCell.self, forCellReuseIdentifier: HomeReuseIdentifier);
+        tableView.register(Home_TableViewCell.self, forCellReuseIdentifier: HomeReuseIdentifier);
         //不要 uiviewcell 的分割线
         tableView.separatorStyle  = UITableViewCellSeparatorStyle.none;
-
+        
+        self.refreshControl = Home_RefreshControl();
+        refreshControl?.addTarget(self, action:#selector(loadData), for: UIControlEvents.valueChanged);
     }
     
     /// 页面加载时，加载数据
@@ -55,14 +59,9 @@ class Home_TableViewController: All_TableViewController {
         if tableView == nil{
             print("adsfdsf");
         }
-              //默认 uiviewCell 的 高度是200
-        //tableView.estimatedRowHeight = 200
-        //uiviewCell 高度可以动态
-        //tableView.rowHeight = UITableViewAutomaticDimension;
-     
         
         // 4.加载微博数据
-        loadData()
+        loadData();
     }
     
     /// 接受广播方法
@@ -83,10 +82,35 @@ class Home_TableViewController: All_TableViewController {
         
         Status.loadStatuses { (any, error) in
             
+            self.refreshControl?.endRefreshing();
+            
             if error != nil{
                 return;
             }
             self.arrray_Status = any;
+        }
+        
+        showLoading();
+    }
+    
+    
+    /// 显示刷新多少条数据
+    private func showLoading(){
+        
+        showLoadingLable.isHidden = false;
+        
+        showLoadingLable.text = "有0条数数据刷新";
+        
+       UIView.animate(withDuration: 0.2, animations: { 
+         self.showLoadingLable.transform = CGAffineTransform(translationX: 0, y: self.showLoadingLable.frame.height)
+       }) { (_) in
+        
+        UIView.animate(withDuration: 2, animations: { () -> Void in
+            self.showLoadingLable.transform = CGAffineTransform.identity;
+        }, completion: { (_) -> Void in
+            self.showLoadingLable.isHidden = true
+        })
+
         }
     }
     
@@ -103,7 +127,6 @@ class Home_TableViewController: All_TableViewController {
 
         navigationItem.titleView = titleButton;
     }
-
     
     /// 点击 button 后触发事件
     ///
@@ -141,10 +164,29 @@ class Home_TableViewController: All_TableViewController {
     }
     
     
+    // MARK: - 懒加载
     lazy var popController : Poptroller_Object = {
         
         let pop = Poptroller_Object();
         return pop;
+    }();
+    
+    /// 显示加载多少行
+    public lazy var showLoadingLable : UILabel = {
+    
+        let height = 44 ;
+        let label = UILabel();
+        //字体颜色
+        label.textColor = UIColor.white;
+        label.backgroundColor = UIColor.red;
+        //字体居中   
+        label.textAlignment = NSTextAlignment.center;
+        label.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44);
+        label.isHidden = true;
+        
+        //nav 添加
+        self.navigationController?.navigationBar.insertSubview(label, at: 0);
+        return label;
     }();
     
     /// 微博行高的缓存, 利用字典作为容器. key就是微博的id, 值就是对应微博的行高
@@ -167,7 +209,7 @@ extension Home_TableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
         // 1.获取cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: HomeReuseIdentifier, for: indexPath) as! StatusForwardTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomeReuseIdentifier, for: indexPath) as! Home_TableViewCell
         // 2.设置数据
         let status = arrray_Status![indexPath.row];
         cell.status = status;
