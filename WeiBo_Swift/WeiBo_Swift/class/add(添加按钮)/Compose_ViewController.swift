@@ -21,8 +21,6 @@ protocol composeViewDelegate {
     func closeComposeViewController(season:String);
 }
 
-
-
 class Compose_ViewController: UIViewController {
 
     var delegate:composeViewDelegate?
