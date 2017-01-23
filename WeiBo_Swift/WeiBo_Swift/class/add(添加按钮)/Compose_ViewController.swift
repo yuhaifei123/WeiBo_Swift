@@ -34,6 +34,23 @@ class Compose_ViewController: UIViewController {
         
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        
+        //开启键盘
+        // 主动召唤键盘
+        txteView.becomeFirstResponder()
+    }
+    
+    /// 要关闭
+    ///
+    /// - Parameter animated: <#animated description#>
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        // 主动隐藏键盘
+        txteView.resignFirstResponder()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     
@@ -42,7 +59,6 @@ class Compose_ViewController: UIViewController {
     func setUpView(){
         
         addNavView();
-        
     }
     
     /// 添加 nav 方法
@@ -74,6 +90,24 @@ class Compose_ViewController: UIViewController {
             make.left.equalTo(label1.snp.left);
             make.width.equalTo(label1.snp.width);
         }
+        
+        //添加 uitextView
+        txteView.addSubview(promptLabel);
+        self.view.addSubview(txteView);
+        
+        promptLabel.snp.makeConstraints { (make) in
+            
+            make.top.equalTo(8);
+            make.left.equalTo(5);
+        }
+    
+        txteView.snp.makeConstraints { (make) in
+        
+            make.top.equalTo(0);
+            make.left.equalTo(0);
+            make.right.equalTo(0);
+            make.height.equalTo(self.view).multipliedBy(0.4);
+        }
     }
     
     /// 点击关闭，监听
@@ -85,7 +119,26 @@ class Compose_ViewController: UIViewController {
     /// 点击发表，监听
     func published(){
         
+        let path = "2/statuses/update.json";
+        let params : [String : Any] = ["access_token":"weibo", "status": txteView.text];
+        AFNetworkTools.shareNetwork().post("path", parameters: params, progress: { (_) in
+           
+        }, success: { (_, JSON) in
+            
+            
+            // 1.提示用户发送成功
+            SVProgressHUD.show(withStatus: "发送成功");
+            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black);
+            
+            self.navItemClose();
+        }) { (_, _) in
+            
+            // 3.提示用户发送失败
+            SVProgressHUD.show(withStatus: "发送失败");
+            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black);
+        }
     }
+    
     
     // MARK - 懒加载
     public lazy var topview : UIView = {
@@ -119,5 +172,41 @@ class Compose_ViewController: UIViewController {
         return label2;
     }();
     
+    //设置提示输入框
+    public lazy var txteView : UITextView = {
+    
+        let textView = UITextView();
+        textView.delegate = self;
+
+        
+        return textView;
+    }();
+
+    //提示 lable
+    public lazy var promptLabel : UILabel = {
+    
+        let label = UILabel();
+        label.text = "分享新鲜事...";
+        label.font = UIFont.systemFont(ofSize: 13);
+        label.textColor = UIColor.darkGray;
+        
+        return label;
+    }();
     
  }
+
+extension Compose_ViewController : UITextViewDelegate{
+    
+    
+    /// textView 开始编辑
+    ///
+    /// - Parameter textView: <#textView description#>
+    func textViewDidChange(_ textView: UITextView) {
+        
+        //是不是有字体
+        let hasText = txteView.hasText;
+        
+        promptLabel.isHidden = hasText;
+        self.navigationItem.rightBarButtonItem?.isEnabled = hasText;
+    }
+}
