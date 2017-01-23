@@ -36,7 +36,7 @@ class Main_TabBarController: UITabBarController {
         addChildViewController(Home_TableViewController(), title: "首页", imageName: "tabbar_home");
         addChildViewController(Message_TableViewController(), title: "消息", imageName: "tabbar_message_center");
 
-        addChildViewController(Add_TableViewController(), title: "", imageName: "");
+        addChildViewController(Compose_ViewController(), title: "", imageName: "");
 
         addChildViewController(Discover_TableViewController(), title: "发现", imageName: "tabbar_discover");
         addChildViewController(Profile_TableViewController(), title: "我", imageName: "tabbar_profile");
@@ -66,12 +66,23 @@ class Main_TabBarController: UITabBarController {
         // 3.添加控制器到tabbarVC
         addChildViewController(nav)
     }
+    
+    
+    /// 点击
+    func clickButton(){
+        
+        let cv = Compose_ViewController();
+        let nav = UINavigationController(rootViewController: cv);
+        
+        present(nav, animated: true, completion: nil);
+
+    }
 
     /**
      添加button
      */
     fileprivate func add_button(){
-
+button_Add.addTarget(self, action: #selector(clickButton), for: UIControlEvents.touchUpInside);
         tabBar.addSubview(button_Add);
 
         // 1.计算按钮宽度
@@ -91,7 +102,7 @@ class Main_TabBarController: UITabBarController {
 
         // 3.设置背景图片
         button.setBackgroundImage(UIImage(named: "tabbar_compose_button"), for: UIControlState())
-        button.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), for: UIControlState.highlighted)
+        button.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), for: UIControlState.highlighted);
 
         return button;
     }();
