@@ -121,21 +121,18 @@ class Compose_ViewController: UIViewController {
         
         let path = "2/statuses/update.json";
         let params : [String : Any] = ["access_token":"weibo", "status": txteView.text];
-        AFNetworkTools.shareNetwork().post("path", parameters: params, progress: { (_) in
+        AFNetworkTools.shareNetwork().post(path, parameters: params, progress: { (_) in
            
         }, success: { (_, JSON) in
             
             
             // 1.提示用户发送成功
-            SVProgressHUD.show(withStatus: "发送成功");
-            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black);
-            
+            SVProgressHUD.showSuccess(withStatus: "发送成功");
             self.navItemClose();
         }) { (_, _) in
             
             // 3.提示用户发送失败
-            SVProgressHUD.show(withStatus: "发送失败");
-            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black);
+            SVProgressHUD.showError(withStatus: "发送失败");
         }
     }
     
@@ -168,7 +165,7 @@ class Compose_ViewController: UIViewController {
         label2.font = UIFont.systemFont(ofSize: 13);
         label2.textColor = UIColor.darkGray;
         label2.sizeToFit();
-
+        
         return label2;
     }();
     
