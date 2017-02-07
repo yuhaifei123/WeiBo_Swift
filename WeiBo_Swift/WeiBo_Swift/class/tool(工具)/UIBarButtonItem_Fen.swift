@@ -21,4 +21,25 @@ extension UIBarButtonItem{
     return UIBarButtonItem(customView: leftBut);
     }
 
+    
+    /// 快速创建，其实就是 init 方法
+    ///
+    /// - Parameters:
+    ///   - imageNameN: 
+    ///   - target: <#target description#>
+    ///   - action: <#action description#>
+    convenience init(imageNameN : String,target: Any?, action: String?) {
+        
+        let leftBut = UIButton();
+        leftBut.setBackgroundImage(UIImage(named: imageNameN), for: UIControlState.normal);
+        leftBut.setBackgroundImage(UIImage(named: imageNameN+"_highlighted"), for: UIControlState.highlighted);
+        if let aa = action {
+           
+            leftBut.addTarget(target, action: Selector(aa), for: UIControlEvents.touchUpInside);
+        }
+        leftBut.sizeToFit();
+        
+        self.init(customView: leftBut);
+        
+    }
 }
