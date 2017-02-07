@@ -31,7 +31,6 @@ class Compose_ViewController: UIViewController {
         self.view.backgroundColor = UIColor.white;
         
         setUpView();
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +38,11 @@ class Compose_ViewController: UIViewController {
         
         //开启键盘
         // 主动召唤键盘
-        txteView.becomeFirstResponder()
+        txteView.becomeFirstResponder();
+         self.tabBarController?.tabBar.isHidden = true;
+        
+        //监听键盘
+        NotificationCenter.default.addObserver(self, selector: #selector(keyNotification(ntf:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil);
     }
     
     /// 要关闭
@@ -48,7 +51,14 @@ class Compose_ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         
         // 主动隐藏键盘
-        txteView.resignFirstResponder()
+        txteView.resignFirstResponder();
+         self.tabBarController?.tabBar.isHidden = false;
+    }
+    
+    
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,10 +69,11 @@ class Compose_ViewController: UIViewController {
     func setUpView(){
         
         addNavView();
+        addToolBar();
     }
     
     /// 添加 nav 方法
-    func addNavView(){
+    private func addNavView(){
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: UIBarButtonItemStyle.plain, target: self, action:#selector(navItemClose));
         
@@ -99,6 +110,7 @@ class Compose_ViewController: UIViewController {
             
             make.top.equalTo(8);
             make.left.equalTo(5);
+            make.width.equalTo(200);
         }
     
         txteView.snp.makeConstraints { (make) in
@@ -108,12 +120,67 @@ class Compose_ViewController: UIViewController {
             make.right.equalTo(0);
             make.height.equalTo(self.view).multipliedBy(0.4);
         }
+
+    }
+    
+    
+    /// 添加底部的工具条
+    func addToolBar(){
+        
+        self.view.addSubview(toolbar);
+        
+        var items = [UIBarButtonItem]();
+        
+        let itemSettings = [["imageName": "compose_toolbar_picture", "action": "selectPicture"],
+                            
+                            ["imageName": "compose_mentionbutton_background"],
+                            
+                            ["imageName": "compose_trendbutton_background"],
+                            
+                            ["imageName": "compose_emoticonbutton_background", "action": "inputEmoticon"],
+                            
+                            ["imageName": "compose_addbutton_background"]];
+        for dic in itemSettings {
+            
+            let item = UIBarButtonItem(imageNameN: dic["imageName"]!, target: self, action: dic["action"]);
+            items.append(item);
+          //  items.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil))
+            let spacingItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action:  nil);
+           items.append(spacingItem);
+        }
+        
+        items.removeLast();
+        
+        toolbar.items = items;
+        
+        //布局大小
+        toolbar.snp.makeConstraints { (make) in
+            
+            make.right.equalTo(0);
+            make.left.equalTo(0);
+            make.bottom.equalTo(0);
+            make.height.equalTo(44);
+        }
     }
     
     /// 点击关闭，监听
     func navItemClose(){
         self.tabBarController!.selectedIndex = 0;
 
+    }
+    
+    /// 键盘监听通知
+    func keyNotification(ntf:Notification){
+        
+        let value = ntf.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue;
+        let rectValue = value.cgRectValue;
+        let Y = rectValue.origin.y;
+        //屏幕的高度
+        let screenHeight =  UIScreen.main.bounds.height;
+        toolbar.snp.updateConstraints { (make) in
+            make.bottom.equalTo((screenHeight - Y) * -1);
+        }
+        
     }
     
     /// 点击发表，监听
@@ -174,7 +241,10 @@ class Compose_ViewController: UIViewController {
     
         let textView = UITextView();
         textView.delegate = self;
-
+        //可以上下滚动
+        textView.alwaysBounceVertical = true;
+        //滚动后键盘消失
+        textView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.onDrag;
         
         return textView;
     }();
@@ -189,6 +259,9 @@ class Compose_ViewController: UIViewController {
         
         return label;
     }();
+    
+    //工具栏
+    public lazy var toolbar : UIToolbar = UIToolbar();
     
  }
 
