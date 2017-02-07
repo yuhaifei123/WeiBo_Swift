@@ -224,7 +224,7 @@ extension Home_TableViewController{
         // 2.判断缓存中有没有
         if let height = rowCache[status.id]
         {
-            print("从缓存中获取")
+           // print("从缓存中获取")
             return height
         }
         
