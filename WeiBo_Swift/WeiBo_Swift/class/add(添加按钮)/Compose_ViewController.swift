@@ -177,9 +177,18 @@ class Compose_ViewController: UIViewController {
         let Y = rectValue.origin.y;
         //屏幕的高度
         let screenHeight =  UIScreen.main.bounds.height;
-        toolbar.snp.updateConstraints { (make) in
+        let number = ntf.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSNumber;
+        
+        self.toolbar.snp.updateConstraints { (make) in
             make.bottom.equalTo((screenHeight - Y) * -1);
+            
         }
+        UIView.animate(withDuration: number.doubleValue) {
+           
+            self.view.layoutIfNeeded();
+        }
+        
+       
         
     }
     
